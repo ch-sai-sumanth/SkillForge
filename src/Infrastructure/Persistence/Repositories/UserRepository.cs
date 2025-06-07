@@ -32,4 +32,21 @@ public class UserRepository : IUserRepository
 
     public async Task DeleteAsync(string id) =>
         await _mongoCollection.DeleteOneAsync(u => u.Id == id);
+    
+    public async Task<UserEntity?> GetByUsernameAsync(string username)
+    {
+        return await _mongoCollection
+            .Find(u => u.Username == username)
+            .FirstOrDefaultAsync();
+    }
+
+    public async Task<UserEntity?> GetByEmailAsync(string email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            return null;
+        
+        return await _mongoCollection
+            .Find(u => u.Email.ToLower() == email.ToLower())
+            .FirstOrDefaultAsync();
+    }
 }

@@ -20,7 +20,7 @@ public class UserService : IUserService
     public async Task<List<UserDto>> GetAllAsync()
     {
         var users = await _userRepository.GetAllAsync();
-        return _mapper.Map<List<UserDto>>(users);
+        return users.Select(user => _mapper.Map<UserDto>(user)).ToList();
     }
 
     public async Task<UserDto?> GetByIdAsync(string id)
@@ -50,4 +50,51 @@ public class UserService : IUserService
         await _userRepository.DeleteAsync(id);
     }
 
+
+    public async Task<UserDto> GetByUsernameAsync(string username)
+    {
+        var user = await _userRepository.GetByUsernameAsync(username);
+        return user is null ? null : _mapper.Map<UserDto>(user);
+    }
+
+    public async Task CreateUserAsync(RegisterRequestDto registerDto)
+    {
+        // Hash the password
+        var passwordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
+
+        var newUser = new UserEntity()
+        {
+            Id = Guid.NewGuid().ToString(),
+            Username = registerDto.Username,
+            Email = registerDto.Email,
+            Password = passwordHash,
+            Role = "Mentee"
+        };
+        
+        await _userRepository.CreateAsync(newUser);
+    }
+    public async Task<UserDto> GetByEmailAsync(string email)
+    {
+        var user = await _userRepository.GetByEmailAsync(email);
+        return user is null ? null : _mapper.Map<UserDto>(user);
+
+    }
+
+    public async Task<UserDto?> ValidateUserAsync(string username, string password)
+    {
+        var user = await _userRepository.GetByUsernameAsync(username);
+        if (user == null)
+            return null;
+
+        if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
+            return null;
+
+        return new UserDto
+        {
+            Id = user.Id,
+            Name = user.Name,
+            Email = user.Email,
+            Role = user.Role
+        };
+    }
 }
