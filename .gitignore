@@ -1,0 +1,13 @@
+# JetBrains IDE folder
+.idea/
+
+# Build output folders for all projects
+**/bin/
+**/obj/
+
+# Optional user and log files
+*.user
+*.suo
+*.vs/
+*.log
+*.tmp
