@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "HxCa7JQa3LA=",
+  "success": true,
+  "projectFilePath": "/home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Domain/Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/saisumanth/.nuget/packages/microsoft.netcore.app.ref/8.0.16/microsoft.netcore.app.ref.8.0.16.nupkg.sha512",
+    "/home/saisumanth/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.16/microsoft.aspnetcore.app.ref.8.0.16.nupkg.sha512"
+  ],
+  "logs": []
+}
