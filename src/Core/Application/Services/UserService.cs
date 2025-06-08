@@ -68,7 +68,7 @@ public class UserService : IUserService
             Username = registerDto.Username,
             Email = registerDto.Email,
             Password = passwordHash,
-            Role = "Mentee"
+            Role = registerDto.Role,
         };
         
         await _userRepository.CreateAsync(newUser);
@@ -95,6 +95,29 @@ public class UserService : IUserService
             Name = user.Name,
             Email = user.Email,
             Role = user.Role
+        };
+    }
+
+    public async Task<UserDto?> UpdateProfileAsync(string userId, UpdateUserProfileDto dto)
+    {
+        var user = await _userRepository.GetByIdAsync(userId);
+        if (user == null)
+            return null;
+
+        user.Name = dto.Name;
+        user.Email = dto.Email;
+        user.Username = dto.Username;
+        user.Skills = dto.Skills;
+
+        await _userRepository.UpdateAsync(user);
+
+        return new UserDto
+        {
+            Id = user.Id,
+            Name = user.Name,
+            Email = user.Email,
+            Username = user.Username,
+            Skills = user.Skills
         };
     }
 }

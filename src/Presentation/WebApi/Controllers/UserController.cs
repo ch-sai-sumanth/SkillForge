@@ -68,4 +68,21 @@ public class UserController : ControllerBase
         await _userService.DeleteAsync(id);
         return NoContent();
     }
+    
+    
+    [HttpPatch]
+    [Route("{id}/update-role")]
+    [Authorize(Roles = "Admin")] // Only Admin can update roles
+    public async Task<IActionResult> UpdateRole([FromRoute] string id, [FromBody] string newRole)
+    {
+        var user = await _userService.GetByIdAsync(id);
+        if (user is null)
+            return NotFound();
+
+        // Assuming UserDto has a Role property
+        user.Role = newRole;
+        await _userService.UpdateAsync(user);
+        
+        return NoContent();
+    }
 }

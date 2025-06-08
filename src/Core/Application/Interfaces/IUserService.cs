@@ -14,4 +14,5 @@ public interface IUserService
     Task<UserDto> GetByUsernameAsync(string username);
     Task CreateUserAsync(RegisterRequestDto registerDto);
     Task<UserDto?> ValidateUserAsync(string loginDtoUsername, string loginDtoPassword);
+    Task<UserDto?> UpdateProfileAsync(string userId, UpdateUserProfileDto dto);
 }
