@@ -8,6 +8,7 @@ using Infrastructure.Configuration;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using User.Domain.Repositories;
@@ -112,7 +113,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+var uploadsDir = Path.Combine(builder.Environment.WebRootPath, "uploads");
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(uploadsDir),
+    RequestPath = "/uploads"
+});
+
+
 app.MapControllers();
 app.UseMiddleware<WebApi.Middleware.ExceptionMiddleware>();
 

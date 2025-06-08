@@ -9,7 +9,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+// [Authorize]
 public class ProfileController : ControllerBase
 {
     private readonly IUserService _userService;
@@ -55,4 +55,60 @@ public class ProfileController : ControllerBase
 
         return Ok("Password changed successfully.");
     }
+    
+    [HttpPost("upload-profile-picture")]
+// [Authorize]
+    public async Task<IActionResult> UploadProfilePicture(IFormFile file)
+    {
+        if (file == null || file.Length == 0)
+            return BadRequest("No file uploaded.");
+
+        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+        var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+
+        if (!allowedExtensions.Contains(extension))
+            return BadRequest("Only JPG, JPEG, and PNG files are allowed.");
+
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await _userService.GetByIdAsync(userId);
+        if (user == null)
+            return NotFound("User not found.");
+
+        var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+        if (!Directory.Exists(uploadsFolder))
+            Directory.CreateDirectory(uploadsFolder);
+
+        // 🔥 Delete old image if exists
+        if (!string.IsNullOrWhiteSpace(user.ProfileImagePath))
+        {
+            var oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", user.ProfileImagePath.TrimStart('/'));
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
+            }
+        }
+
+        // 💾 Save new image
+        var fileName = $"{Guid.NewGuid()}{extension}";
+        var filePath = Path.Combine(uploadsFolder, fileName);
+
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await file.CopyToAsync(stream);
+        }
+
+        // Update user with new image path
+        var relativePath = $"/uploads/{fileName}";
+        user.ProfileImagePath = relativePath;
+        await _userService.UpdateAsync(user);
+
+        // ✅ Return full image URL
+        var baseUrl = $"{Request.Scheme}://{Request.Host}";
+        var fullImageUrl = $"{baseUrl}{relativePath}";
+
+        return Ok(new { imageUrl = fullImageUrl });
+    }
+
+
+
 }

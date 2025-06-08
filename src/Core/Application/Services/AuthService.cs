@@ -36,7 +36,7 @@ public class AuthService : IAuthService
     public async Task<UserDto?> ValidateUserAsync(string username, string password)
     {
         var user = await _userRepository.GetByUsernameAsync(username);
-        if (user == null)
+        if (user == null || string.IsNullOrWhiteSpace(user.Password))
             return null;
 
         if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
