@@ -12,7 +12,5 @@ public interface IUserService
     Task DeleteAsync(string id);
     Task<UserDto> GetByEmailAsync(string email);
     Task<UserDto> GetByUsernameAsync(string username);
-    Task CreateUserAsync(RegisterRequestDto registerDto);
-    Task<UserDto?> ValidateUserAsync(string loginDtoUsername, string loginDtoPassword);
     Task<UserDto?> UpdateProfileAsync(string userId, UpdateUserProfileDto dto);
 }

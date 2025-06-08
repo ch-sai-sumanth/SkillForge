@@ -57,22 +57,7 @@ public class UserService : IUserService
         return user is null ? null : _mapper.Map<UserDto>(user);
     }
 
-    public async Task CreateUserAsync(RegisterRequestDto registerDto)
-    {
-        // Hash the password
-        var passwordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
 
-        var newUser = new UserEntity()
-        {
-            Id = Guid.NewGuid().ToString(),
-            Username = registerDto.Username,
-            Email = registerDto.Email,
-            Password = passwordHash,
-            Role = registerDto.Role,
-        };
-        
-        await _userRepository.CreateAsync(newUser);
-    }
     public async Task<UserDto> GetByEmailAsync(string email)
     {
         var user = await _userRepository.GetByEmailAsync(email);
@@ -80,23 +65,7 @@ public class UserService : IUserService
 
     }
 
-    public async Task<UserDto?> ValidateUserAsync(string username, string password)
-    {
-        var user = await _userRepository.GetByUsernameAsync(username);
-        if (user == null)
-            return null;
 
-        if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
-            return null;
-
-        return new UserDto
-        {
-            Id = user.Id,
-            Name = user.Name,
-            Email = user.Email,
-            Role = user.Role
-        };
-    }
 
     public async Task<UserDto?> UpdateProfileAsync(string userId, UpdateUserProfileDto dto)
     {

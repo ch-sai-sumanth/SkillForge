@@ -14,12 +14,14 @@ namespace API.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IUserService _userService; // Your service to validate users
+    private readonly IAuthService _authService; // Your service to handle authentication logic
     private readonly IConfiguration _configuration;
 
-    public AuthController(IUserService userService, IConfiguration configuration)
+    public AuthController(IUserService userService,IAuthService authService, IConfiguration configuration)
     {
         _userService = userService;
         _configuration = configuration;
+        _authService = authService;
     }
     
     [HttpPost("register")]
@@ -36,7 +38,7 @@ public class AuthController : ControllerBase
 
        
 
-        await _userService.CreateUserAsync(registerDto);
+        await _authService.CreateUserAsync(registerDto);
 
         return Ok("User registered successfully");
     }
@@ -54,13 +56,13 @@ public class AuthController : ControllerBase
             var userByEmail = await _userService.GetByEmailAsync(input);
             if (userByEmail != null)
             {
-                user = await _userService.ValidateUserAsync(userByEmail.Username, loginDto.Password);
+                user = await _authService.ValidateUserAsync(userByEmail.Username, loginDto.Password);
             }
         }
         else
         {
             // Input is username - validate directly
-            user = await _userService.ValidateUserAsync(input, loginDto.Password);
+            user = await _authService.ValidateUserAsync(input, loginDto.Password);
         }
 
         if (user == null)
