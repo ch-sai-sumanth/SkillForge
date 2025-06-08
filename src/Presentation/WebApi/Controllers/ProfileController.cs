@@ -78,7 +78,7 @@ public class ProfileController : ControllerBase
         if (!Directory.Exists(uploadsFolder))
             Directory.CreateDirectory(uploadsFolder);
 
-        // 🔥 Delete old image if exists
+        //  Delete old image if exists
         if (!string.IsNullOrWhiteSpace(user.ProfileImagePath))
         {
             var oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", user.ProfileImagePath.TrimStart('/'));
@@ -107,6 +107,31 @@ public class ProfileController : ControllerBase
         var fullImageUrl = $"{baseUrl}{relativePath}";
 
         return Ok(new { imageUrl = fullImageUrl });
+    }
+    [HttpDelete("delete-account")]
+    [Authorize]
+    public async Task<IActionResult> DeleteAccount()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await _userService.GetByIdAsync(userId);
+
+        if (user == null)
+            return NotFound("User not found.");
+
+        // 🧹 Delete profile image from server if it exists
+        if (!string.IsNullOrWhiteSpace(user.ProfileImagePath))
+        {
+            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", user.ProfileImagePath.TrimStart('/'));
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+        }
+
+        // 🗑️ Delete user from database
+        await _userService.DeleteAsync(userId);
+
+        return Ok("Account deleted successfully.");
     }
 
 
