@@ -89,4 +89,21 @@ public class UserService : IUserService
             Skills = user.Skills
         };
     }
+    
+    public async Task<bool> ChangePasswordAsync(string userId, ChangePasswordDto dto)
+    {
+        var user = await _userRepository.GetByIdAsync(userId);
+        if (user == null) return false;
+
+        // Verify old password
+        var isMatch = BCrypt.Net.BCrypt.Verify(dto.OldPassword, user.Password);
+        if (!isMatch) return false;
+
+        // Hash and set new password
+        user.Password = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+        await _userRepository.UpdateAsync(user);
+
+        return true;
+    }
+
 }

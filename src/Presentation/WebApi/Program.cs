@@ -39,6 +39,8 @@ builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<UserDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<ChangePasswordDtoValidator>();
+
 
 
 builder.Services.AddEndpointsApiExplorer();

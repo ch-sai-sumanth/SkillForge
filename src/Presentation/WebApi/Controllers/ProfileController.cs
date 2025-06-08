@@ -42,4 +42,17 @@ public class ProfileController : ControllerBase
         var result = await _userService.UpdateProfileAsync(userId, dto);
         return Ok(result);
     }
+    
+    [HttpPut("change-password")]
+    [Authorize]
+    public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto dto)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var result = await _userService.ChangePasswordAsync(userId, dto);
+
+        if (!result)
+            return BadRequest("Invalid old password.");
+
+        return Ok("Password changed successfully.");
+    }
 }

@@ -13,4 +13,7 @@ public interface IUserService
     Task<UserDto> GetByEmailAsync(string email);
     Task<UserDto> GetByUsernameAsync(string username);
     Task<UserDto?> UpdateProfileAsync(string userId, UpdateUserProfileDto dto);
+    
+    Task<bool> ChangePasswordAsync(string userId, ChangePasswordDto dto);
+
 }
