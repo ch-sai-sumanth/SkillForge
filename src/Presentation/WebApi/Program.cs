@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
 using User.Domain.Repositories;
 using WebApi.Validators;
 
@@ -33,6 +34,8 @@ builder.Services.AddAutoMapper(typeof(UserProfile));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+
 
 
 builder.Services.AddControllers();
@@ -42,6 +45,18 @@ builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<UserDtoValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<ChangePasswordDtoValidator>();
 
+builder.Services.AddSingleton<IMongoClient>(sp =>
+{
+    var connectionString = builder.Configuration.GetSection("MongoDbSettings")["ConnectionString"];
+    return new MongoClient(connectionString);
+});
+
+builder.Services.AddScoped<IMongoDatabase>(sp =>
+{
+    var client = sp.GetRequiredService<IMongoClient>();
+    var dbName = builder.Configuration.GetSection("MongoDbSettings")["DatabaseName"];
+    return client.GetDatabase(dbName);
+});
 
 
 builder.Services.AddEndpointsApiExplorer();

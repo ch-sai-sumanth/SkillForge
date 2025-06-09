@@ -13,5 +13,8 @@ public class User
     public List<string> Skills { get; set; } = new();
     
     public string? ProfileImagePath { get; set; }
+    
+    public string? RefreshToken { get; set; }
+    public DateTime? RefreshTokenExpiryTime { get; set; }
 
 }

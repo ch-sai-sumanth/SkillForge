@@ -1,5 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using Application.DTOs;
 using Application.Interfaces;
@@ -47,69 +48,20 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequestDto loginDto)
     {
-        UserDto user = null;
-        string input = loginDto.Username; // This could be username or email
-
-        if (IsValidEmail(input))
-        {
-            // Input is email - fetch user by email first
-            var userByEmail = await _userService.GetByEmailAsync(input);
-            if (userByEmail != null)
-            {
-                user = await _authService.ValidateUserAsync(userByEmail.Username, loginDto.Password);
-            }
-        }
-        else
-        {
-            // Input is username - validate directly
-            user = await _authService.ValidateUserAsync(input, loginDto.Password);
-        }
-
-        if (user == null)
-        {
+        var authResponse = await _authService.LoginAsync(loginDto.Username, loginDto.Password);
+        if (authResponse == null)
             return Unauthorized("Invalid username/email or password");
-        }
 
-        var token = GenerateJwtToken(user);
-        return Ok(new { Token = token });
+        return Ok(authResponse); // returns { token, refreshToken }
     }
 
-    private string GenerateJwtToken(UserDto user)
+    [HttpPost("refresh-token")]
+    public async Task<IActionResult> RefreshToken([FromBody] string refreshToken)
     {
-        var jwtSettings = _configuration.GetSection("JwtSettings");
+        var newTokens = await _authService.RefreshTokenAsync(refreshToken);
+        if (newTokens == null)
+            return Unauthorized("Invalid or expired refresh token");
 
-        var claims = new[]
-        {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-            new Claim(JwtRegisteredClaimNames.Email, user.Email),
-            new Claim(ClaimTypes.Role, user.Role),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
-
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-        var token = new JwtSecurityToken(
-            issuer: jwtSettings["Issuer"],
-            audience: jwtSettings["Audience"],
-            claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings["ExpiryMinutes"])),
-            signingCredentials: creds
-        );
-
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
-    
-    private bool IsValidEmail(string input)
-    {
-        try
-        {
-            var addr = new System.Net.Mail.MailAddress(input);
-            return addr.Address == input;
-        }
-        catch
-        {
-            return false;
-        }
+        return Ok(newTokens);
     }
 }

@@ -11,10 +11,8 @@ public class UserRepository : IUserRepository
 {
     private readonly IMongoCollection<UserEntity> _mongoCollection;
 
-    public UserRepository(IOptions<MongoDbSettings> settings)
+    public UserRepository(IMongoDatabase database)
     {
-        var client = new MongoClient(settings.Value.ConnectionString);
-        var database = client.GetDatabase(settings.Value.DatabaseName);
         _mongoCollection = database.GetCollection<UserEntity>("Users");
     }
 
@@ -49,4 +47,5 @@ public class UserRepository : IUserRepository
             .Find(u => u.Email.ToLower() == email.ToLower())
             .FirstOrDefaultAsync();
     }
+
 }
