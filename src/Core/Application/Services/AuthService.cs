@@ -7,7 +7,9 @@ using Application.DTOs;
 using Application.Interfaces;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using User.Domain.Entities;
 using User.Domain.Repositories;
 using UserEntity = User.Domain.Entities.User;
 
@@ -19,13 +21,17 @@ public class AuthService : IAuthService
     private readonly IAuthRepository _authRepository;
     private readonly IMapper _mapper;
     private readonly IConfiguration _configuration;
+    private readonly IActivityLogRepository _activityLogRepository;
+    private readonly ILogger<AuthService> _logger;
 
-    public AuthService(IUserRepository userRepository,IAuthRepository authRepository,IMapper mapper,IConfiguration configuration)
+    public AuthService(IUserRepository userRepository,IAuthRepository authRepository,IMapper mapper,IConfiguration configuration,IActivityLogRepository activityLogRepository,ILogger<AuthService> logger)
     {
         _userRepository = userRepository;
         _authRepository = authRepository;
         _mapper = mapper;
         _configuration = configuration;
+        _activityLogRepository = activityLogRepository;
+        _logger = logger;
     }
     public async Task CreateUserAsync(RegisterRequestDto registerDto)
     {
@@ -41,6 +47,15 @@ public class AuthService : IAuthService
         };
         
         await _userRepository.CreateAsync(newUser);
+        await _activityLogRepository.LogAsync(new ActivityLog
+        {
+            UserId = newUser.Id,
+            Action = "User Creation",
+            Description = $"User '{newUser.Username}' created successfully.",
+            Timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"))
+        });
+        _logger.LogInformation("User '{Username}' Created Succesfully", newUser.Username);
+
     }
     
     public async Task<UserDto?> ValidateUserAsync(string username, string password)
@@ -51,6 +66,7 @@ public class AuthService : IAuthService
 
         if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
             return null;
+        _logger.LogInformation("User '{Username}' validation is done", user.Username);
 
         return new UserDto
         {
@@ -66,6 +82,8 @@ public class AuthService : IAuthService
         var randomBytes = new byte[64];
         using var rng = RandomNumberGenerator.Create();
         rng.GetBytes(randomBytes);
+        _logger.LogInformation("New Refresh token generated");
+
         return Convert.ToBase64String(randomBytes);
     }
     
@@ -95,6 +113,16 @@ public class AuthService : IAuthService
         userEntity.RefreshToken = refreshToken;
         userEntity.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
         await _userRepository.UpdateAsync(userEntity);
+        
+        // Log the login activity
+        await _activityLogRepository.LogAsync(new ActivityLog
+        {
+            UserId = userDto.Id,
+            Action = "Login",
+            Description = "User logged in successfully",
+            Timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"))
+        });
+        _logger.LogInformation("User '{Username}' logged in Successfully", userDto.Username);
 
         return new AuthResponseDto
         {
@@ -125,6 +153,8 @@ public class AuthService : IAuthService
             expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings["ExpiryMinutes"])),
             signingCredentials: creds
         );
+        _logger.LogInformation("JWT Token generated for user '{Username}'", user.Username);
+
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
@@ -168,6 +198,7 @@ public class AuthService : IAuthService
 
         user.RefreshToken = null;
         user.RefreshTokenExpiryTime = DateTime.MinValue;
+        _logger.LogInformation("User '{Username}' logged out successfully", user.Username);
 
         await _userRepository.UpdateAsync(user);
     }

@@ -12,10 +12,23 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
+using Serilog;
 using User.Domain.Repositories;
 using WebApi.Validators;
 
+
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.Seq("http://localhost:5531")  // Or from config
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 // Configure HTTPS redirection options
 builder.Services.Configure<HttpsRedirectionOptions>(options =>
@@ -35,6 +48,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IActivityLogRepository, ActivityLogRepository>();
+
 
 
 
@@ -130,7 +145,11 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
+app.UseMiddleware<WebApi.Middleware.ExceptionMiddleware>();
 app.UseStaticFiles();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 var uploadsDir = Path.Combine(builder.Environment.WebRootPath, "uploads");
 app.UseStaticFiles(new StaticFileOptions
@@ -141,9 +160,21 @@ app.UseStaticFiles(new StaticFileOptions
 
 
 app.MapControllers();
-app.UseMiddleware<WebApi.Middleware.ExceptionMiddleware>();
 
 
-app.Run();
+
+try
+{
+    Log.Information("Starting up the application");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application start-up failed");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
 
 

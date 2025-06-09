@@ -5,16 +5,25 @@ namespace Infrastructure.Repositories;
 
 public class AuthRepository :IAuthRepository
 {
-    private readonly IMongoCollection<UserEntity> _usersCollection;
+    private readonly IMongoCollection<UserEntity> _mongoCollection;
 
     public AuthRepository(IMongoDatabase database)
     {
-        _usersCollection = database.GetCollection<UserEntity>("Users");
+        _mongoCollection = database.GetCollection<UserEntity>("Users");
     }
 
     public async Task<UserEntity?> GetByRefreshTokenAsync(string refreshToken)
     {
         var filter = Builders<UserEntity>.Filter.Eq(u => u.RefreshToken, refreshToken);
-        return await _usersCollection.Find(filter).FirstOrDefaultAsync();
+        return await _mongoCollection.Find(filter).FirstOrDefaultAsync();
     }
+    public async Task InvalidateRefreshTokenAsync(string userId)
+    {
+        var update = Builders<UserEntity>.Update
+            .Set(u => u.RefreshToken, null)
+            .Set(u => u.RefreshTokenExpiryTime, null);
+
+        await _mongoCollection.UpdateOneAsync(u => u.Id == userId, update);
+    }
+    
 }
