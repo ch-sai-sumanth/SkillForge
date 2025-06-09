@@ -1,6 +1,7 @@
 using Application.DTOs;
 using Application.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using User.Domain.Entities;
 using User.Domain.Repositories;
@@ -169,5 +170,15 @@ public class UserService : IUserService
     }
     
 
+    public async Task<bool> UpdateMentorSkillsAsync(string userId, List<string> skills)
+    {
+        var user = await _userRepository.GetByIdAsync(userId);
+        if (user == null) return false;
+
+        user.Skills = skills;
+        await _userRepository.UpdateAsync(user);
+
+        return true;
+    }
 
 }

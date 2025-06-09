@@ -20,5 +20,8 @@ public interface IUserService
     
     Task SetMentorAvailabilityAsync(string mentorId, List<AvailabilityDto> availabilityDtos);
     Task<List<UserDto>> SearchMentorsBySkillAndAvailabilityAsync(string skill, DayOfWeek day, TimeSpan time);
+    
+    Task<bool> UpdateMentorSkillsAsync(string userId, List<string> skills);
+
 
 }

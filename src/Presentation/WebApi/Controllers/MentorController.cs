@@ -31,4 +31,11 @@ public class MentorController : ControllerBase
         var results = await _userService.SearchMentorsBySkillAndAvailabilityAsync(skill, day, parsedTime);
         return Ok(results);
     }
+    
+    [HttpPut("{mentorId}/skills")]
+    public async Task<IActionResult> UpdateSkills(string mentorId, [FromBody] UpdateSkillsDto dto)
+    {
+        var updated = await _userService.UpdateMentorSkillsAsync(mentorId, dto.Skills);
+        return updated ? Ok(new { message = "Skills updated successfully." }) : NotFound("Mentor not found.");
+    }
 }
