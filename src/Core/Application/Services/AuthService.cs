@@ -160,4 +160,15 @@ public class AuthService : IAuthService
             RefreshToken = newRefreshToken
         };
     }
+
+    public async Task LogoutAsync(string userId)
+    {
+        var user = await _userRepository.GetByIdAsync(userId);
+        if (user == null) return;
+
+        user.RefreshToken = null;
+        user.RefreshTokenExpiryTime = DateTime.MinValue;
+
+        await _userRepository.UpdateAsync(user);
+    }
 }

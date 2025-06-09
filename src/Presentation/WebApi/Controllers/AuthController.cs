@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Application.DTOs;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using UserEntity = User.Domain.Entities.User;
@@ -54,6 +55,19 @@ public class AuthController : ControllerBase
 
         return Ok(authResponse); // returns { token, refreshToken }
     }
+    
+    [Authorize]
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId))
+            return Unauthorized();
+
+        await _authService.LogoutAsync(userId);
+        return Ok("Logged out successfully");
+    }
+
 
     [HttpPost("refresh-token")]
     public async Task<IActionResult> RefreshToken([FromBody] string refreshToken)
