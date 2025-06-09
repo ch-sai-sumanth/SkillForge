@@ -30,6 +30,7 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
+
 // Configure HTTPS redirection options
 builder.Services.Configure<HttpsRedirectionOptions>(options =>
 {
@@ -142,7 +143,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+app.UseSerilogRequestLogging(options =>
+{
+    options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms";
+});
 app.UseHttpsRedirection();
 app.UseMiddleware<WebApi.Middleware.ExceptionMiddleware>();
 app.UseStaticFiles();
