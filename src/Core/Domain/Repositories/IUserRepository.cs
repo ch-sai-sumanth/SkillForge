@@ -13,5 +13,5 @@ public interface IUserRepository
     Task<List<User>> GetMentorsBySkillsAsync(List<string> skills);
 
 
-
+    Task<List<User>> GetMentorsBySkillAsync(string skill);
 }

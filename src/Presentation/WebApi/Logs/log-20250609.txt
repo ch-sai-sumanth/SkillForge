@@ -27,3 +27,32 @@
 [2025-06-09 15:04:20 INF] HTTP POST /api/Auth/register responded 200 in 627.2865 ms
 [2025-06-09 15:04:32 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 4787.2617 ms
 [2025-06-09 15:04:50 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 198.9981 ms
+[2025-06-09 15:19:52 INF] Starting up the application
+[2025-06-09 15:19:52 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-09 15:23:25 INF] Starting up the application
+[2025-06-09 15:23:26 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-09 15:23:49 INF] HTTP GET /api/mentors/search responded 400 in 563.1902 ms
+[2025-06-09 15:24:18 INF] HTTP GET /api/mentors/search responded 200 in 305.2035 ms
+[2025-06-09 15:25:01 INF] HTTP GET /api/User responded 401 in 10.6721 ms
+[2025-06-09 15:25:13 INF] User 'sai' validation is done
+[2025-06-09 15:25:13 INF] JWT Token generated for user ''
+[2025-06-09 15:25:13 INF] New Refresh token generated
+[2025-06-09 15:25:14 INF] User '' logged in Successfully
+[2025-06-09 15:25:14 INF] HTTP POST /api/Auth/login responded 200 in 557.8179 ms
+[2025-06-09 15:50:16 INF] HTTP PUT /api/mentors/4ea83c60-6cac-4e27-b54d-d5cf51b37d3c/availability responded 400 in 67.1940 ms
+[2025-06-09 15:51:21 INF] User 'sai' validation is done
+[2025-06-09 15:51:21 INF] JWT Token generated for user ''
+[2025-06-09 15:51:21 INF] New Refresh token generated
+[2025-06-09 15:51:21 INF] User '' logged in Successfully
+[2025-06-09 15:51:21 INF] HTTP POST /api/Auth/login responded 200 in 216.5180 ms
+[2025-06-09 15:51:57 INF] HTTP PUT /api/mentors/4ea83c60-6cac-4e27-b54d-d5cf51b37d3c/availability responded 400 in 14.7319 ms
+[2025-06-09 15:52:54 INF] HTTP PUT /api/mentors/4ea83c60-6cac-4e27-b54d-d5cf51b37d3c/availability responded 400 in 4.9521 ms
+[2025-06-09 15:53:04 INF] HTTP PUT /api/mentors/4ea83c60-6cac-4e27-b54d-d5cf51b37d3c/availability responded 400 in 2.4569 ms
+[2025-06-09 15:54:29 INF] HTTP PUT /api/mentors/4ea83c60-6cac-4e27-b54d-d5cf51b37d3c/availability responded 200 in 65.7578 ms
+[2025-06-09 15:55:11 INF] HTTP GET /api/mentors/search responded 200 in 26.1275 ms
+[2025-06-09 15:55:18 INF] HTTP GET /api/mentors/search responded 200 in 5.4864 ms
+[2025-06-09 15:55:26 INF] HTTP GET /api/mentors/search responded 200 in 3.7002 ms
+[2025-06-09 15:55:55 INF] HTTP PUT /api/mentors/784d8ec9-9dbf-4167-8997-ee4392cc3510/availability responded 400 in 1.7961 ms
+[2025-06-09 15:56:22 INF] HTTP PUT /api/mentors/784d8ec9-9dbf-4167-8997-ee4392cc3510/availability responded 200 in 4.7560 ms
+[2025-06-09 15:56:32 INF] HTTP GET /api/mentors/search responded 200 in 3.0713 ms
+[2025-06-09 15:56:40 INF] HTTP GET /api/mentors/search responded 200 in 3.3204 ms

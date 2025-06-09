@@ -17,4 +17,8 @@ public interface IUserService
     Task<bool> ChangePasswordAsync(string userId, ChangePasswordDto dto);
 
     Task<List<MentorMatchDto>?> GetMentorsBySkillsWithScoreAsync(List<string> skills);
+    
+    Task SetMentorAvailabilityAsync(string mentorId, List<AvailabilityDto> availabilityDtos);
+    Task<List<UserDto>> SearchMentorsBySkillAndAvailabilityAsync(string skill, DayOfWeek day, TimeSpan time);
+
 }

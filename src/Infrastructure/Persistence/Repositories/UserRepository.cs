@@ -1,6 +1,8 @@
+using Application.DTOs;
 using Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using User.Domain.Entities;
 using User.Domain.Repositories;
 
 using UserEntity = User.Domain.Entities.User;
@@ -57,5 +59,9 @@ public class UserRepository : IUserRepository
         return await _mongoCollection.Find(filter).ToListAsync();
     }
 
+    public async Task<List<UserEntity>> GetMentorsBySkillAsync(string skill)
+    {
+        return await _mongoCollection.Find(u => u.Role == "Mentor" && u.Skills.Contains(skill)).ToListAsync();
+    }
 
 }

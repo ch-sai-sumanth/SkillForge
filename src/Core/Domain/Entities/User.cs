@@ -12,6 +12,8 @@ public class User
     public string Role { get; set; } = "Mentee";
     public List<string> Skills { get; set; } = new();
     
+    public List<Availability> Availabilities { get; set; } = new();
+    
     public string? ProfileImagePath { get; set; }
     
     public string? RefreshToken { get; set; }

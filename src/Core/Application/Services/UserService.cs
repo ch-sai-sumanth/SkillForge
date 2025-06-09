@@ -140,4 +140,34 @@ public class UserService : IUserService
 
         return mentorMatches;
     }
+        
+    public async Task SetMentorAvailabilityAsync(string mentorId, List<AvailabilityDto> availabilityDtos)
+    {
+        var mentor = await _userRepository.GetByIdAsync(mentorId);
+        if (mentor == null) throw new Exception("Mentor not found");
+
+        mentor.Availabilities = availabilityDtos.Select(a => new Availability
+        {
+            Day = a.Day,
+            StartTime = a.StartTime,
+            EndTime = a.EndTime
+        }).ToList();
+
+        await _userRepository.UpdateAsync(mentor);
+    }
+    
+    public async Task<List<UserDto>> SearchMentorsBySkillAndAvailabilityAsync(string skill, DayOfWeek day, TimeSpan time)
+    {
+        var mentors = await _userRepository.GetMentorsBySkillAsync(skill);
+
+        var availableMentors = mentors.Where(m => m.Availabilities.Any(a =>
+            a.Day == day &&
+            a.StartTime <= time &&
+            a.EndTime >= time)).ToList();
+
+        return availableMentors.Select(m => _mapper.Map<UserDto>(m)).ToList();
+    }
+    
+
+
 }
