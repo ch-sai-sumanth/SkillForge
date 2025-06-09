@@ -12,15 +12,13 @@ public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
-    private readonly IActivityLogRepository _activityLogRepository;
     private readonly ILogger<UserService> _logger;
 
 
-    public UserService(IUserRepository userRepository,IMapper mapper,IActivityLogRepository activityLogRepository,ILogger<UserService> logger)
+    public UserService(IUserRepository userRepository,IMapper mapper,ILogger<UserService> logger)
     {
         this._userRepository = userRepository;
         this._mapper = mapper;
-        _activityLogRepository = activityLogRepository;
         _logger = logger;
     }
 
@@ -43,15 +41,6 @@ public class UserService : IUserService
         // Generate new ID for creation (ignore any ID from DTO)
         user.Id = Guid.NewGuid().ToString();
         await _userRepository.CreateAsync(user);
-        // Log creation
-        await _activityLogRepository.LogAsync(new ActivityLog
-        {
-            UserId = user.Id,
-            Action = "User Created",
-            Description = $"User '{user.Username}' created successfully.",
-            Timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"))
-
-        });
         _logger.LogInformation("User '{Username}' has been created.", user.Username);
 
     }
@@ -60,13 +49,6 @@ public class UserService : IUserService
     {
         var user = _mapper.Map<UserEntity>(userDto);
         await _userRepository.UpdateAsync(user);
-        await _activityLogRepository.LogAsync(new ActivityLog
-        {
-            UserId = user.Id,
-            Action = "User Updated",
-            Description = $"User '{user.Username}' updated their details.",
-            Timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"))
-        });
         _logger.LogInformation("User '{Username}' updated their details..", user.Username);
 
     }
@@ -75,15 +57,6 @@ public class UserService : IUserService
     {
         var user = await _userRepository.GetByIdAsync(id);
         await _userRepository.DeleteAsync(id);
-
-        // Log deletion
-        await _activityLogRepository.LogAsync(new ActivityLog
-        {
-            UserId = id,
-            Action = "User Deleted",
-            Description = user != null ? $"User '{user.Username}' was deleted." : "User deleted.",
-            Timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"))
-        });
         _logger.LogInformation("User '{Username}' is deleted", user.Username);
 
     }
@@ -117,15 +90,6 @@ public class UserService : IUserService
         user.Skills = dto.Skills;
 
         await _userRepository.UpdateAsync(user);
-        
-        // Log profile update
-        await _activityLogRepository.LogAsync(new ActivityLog
-        {
-            UserId = user.Id,
-            Action = "Profile Updated",
-            Description = $"User '{user.Username}' updated their profile.",
-            Timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"))
-        });
         _logger.LogInformation("User '{Username}' Profile updated", user.Username);
 
         

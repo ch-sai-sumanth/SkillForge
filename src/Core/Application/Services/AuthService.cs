@@ -21,16 +21,14 @@ public class AuthService : IAuthService
     private readonly IAuthRepository _authRepository;
     private readonly IMapper _mapper;
     private readonly IConfiguration _configuration;
-    private readonly IActivityLogRepository _activityLogRepository;
     private readonly ILogger<AuthService> _logger;
 
-    public AuthService(IUserRepository userRepository,IAuthRepository authRepository,IMapper mapper,IConfiguration configuration,IActivityLogRepository activityLogRepository,ILogger<AuthService> logger)
+    public AuthService(IUserRepository userRepository,IAuthRepository authRepository,IMapper mapper,IConfiguration configuration,ILogger<AuthService> logger)
     {
         _userRepository = userRepository;
         _authRepository = authRepository;
         _mapper = mapper;
         _configuration = configuration;
-        _activityLogRepository = activityLogRepository;
         _logger = logger;
     }
     public async Task CreateUserAsync(RegisterRequestDto registerDto)
@@ -47,13 +45,6 @@ public class AuthService : IAuthService
         };
         
         await _userRepository.CreateAsync(newUser);
-        await _activityLogRepository.LogAsync(new ActivityLog
-        {
-            UserId = newUser.Id,
-            Action = "User Creation",
-            Description = $"User '{newUser.Username}' created successfully.",
-            Timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"))
-        });
         _logger.LogInformation("User '{Username}' Created Succesfully", newUser.Username);
 
     }
@@ -113,15 +104,6 @@ public class AuthService : IAuthService
         userEntity.RefreshToken = refreshToken;
         userEntity.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
         await _userRepository.UpdateAsync(userEntity);
-        
-        // Log the login activity
-        await _activityLogRepository.LogAsync(new ActivityLog
-        {
-            UserId = userDto.Id,
-            Action = "Login",
-            Description = "User logged in successfully",
-            Timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"))
-        });
         _logger.LogInformation("User '{Username}' logged in Successfully", userDto.Username);
 
         return new AuthResponseDto
