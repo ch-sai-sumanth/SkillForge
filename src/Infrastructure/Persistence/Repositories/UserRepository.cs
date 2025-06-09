@@ -47,5 +47,15 @@ public class UserRepository : IUserRepository
             .Find(u => u.Email.ToLower() == email.ToLower())
             .FirstOrDefaultAsync();
     }
+    
+    public async Task<List<UserEntity>> GetMentorsBySkillsAsync(List<string> skills)
+    {
+        var filterBuilder = Builders<UserEntity>.Filter;
+        var filter = filterBuilder.Eq(u => u.Role, "Mentor") &
+                     filterBuilder.AnyIn(u => u.Skills, skills);
+
+        return await _mongoCollection.Find(filter).ToListAsync();
+    }
+
 
 }

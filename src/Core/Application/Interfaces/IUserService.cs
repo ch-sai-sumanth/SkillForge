@@ -16,4 +16,5 @@ public interface IUserService
     
     Task<bool> ChangePasswordAsync(string userId, ChangePasswordDto dto);
 
+    Task<List<MentorMatchDto>?> GetMentorsBySkillsWithScoreAsync(List<string> skills);
 }

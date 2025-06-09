@@ -121,4 +121,23 @@ public class UserService : IUserService
         return true;
     }
 
+    
+    public async Task<List<MentorMatchDto>> GetMentorsBySkillsWithScoreAsync(List<string> skills)
+    {
+        var mentors = await _userRepository.GetMentorsBySkillsAsync(skills);
+    
+        var mentorMatches = mentors.Select(mentor =>
+            {
+                var matchedSkillsCount = mentor.Skills.Intersect(skills, StringComparer.OrdinalIgnoreCase).Count();
+                return new MentorMatchDto
+                {
+                    Mentor = _mapper.Map<UserDto>(mentor),
+                    MatchScore = matchedSkillsCount
+                };
+            })
+            .OrderByDescending(m => m.MatchScore)
+            .ToList();
+
+        return mentorMatches;
+    }
 }

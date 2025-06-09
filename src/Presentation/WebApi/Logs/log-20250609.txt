@@ -2,3 +2,28 @@
 [2025-06-09 14:31:57 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
 [2025-06-09 14:32:44 INF] User 'string12' Created Succesfully
 [2025-06-09 14:32:44 INF] HTTP POST /api/Auth/register responded 200 in 1292.0195 ms
+[2025-06-09 14:52:09 INF] Starting up the application
+[2025-06-09 14:52:10 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-09 14:52:22 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 815.8885 ms
+[2025-06-09 14:53:57 INF] HTTP POST /api/Auth/register responded 400 in 73.7801 ms
+[2025-06-09 14:54:52 INF] HTTP POST /api/Auth/register responded 400 in 8.6430 ms
+[2025-06-09 14:55:18 INF] HTTP POST /api/Auth/register responded 400 in 44.7765 ms
+[2025-06-09 14:55:27 INF] User 'sumanth' Created Succesfully
+[2025-06-09 14:55:27 INF] HTTP POST /api/Auth/register responded 200 in 518.0001 ms
+[2025-06-09 14:55:35 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 13.0090 ms
+[2025-06-09 14:55:41 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 2.5935 ms
+[2025-06-09 14:55:42 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 2.1359 ms
+[2025-06-09 14:55:46 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 2.5007 ms
+[2025-06-09 14:56:36 INF] Starting up the application
+[2025-06-09 14:56:36 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-09 14:56:53 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 1188.2711 ms
+[2025-06-09 14:57:04 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 89.9518 ms
+[2025-06-09 14:57:06 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 79.7760 ms
+[2025-06-09 14:57:46 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 8235.1359 ms
+[2025-06-09 15:01:25 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 216603.5990 ms
+[2025-06-09 15:03:52 INF] User 'sai' Created Succesfully
+[2025-06-09 15:03:52 INF] HTTP POST /api/Auth/register responded 200 in 1063.4077 ms
+[2025-06-09 15:04:20 INF] User 'sumanth' Created Succesfully
+[2025-06-09 15:04:20 INF] HTTP POST /api/Auth/register responded 200 in 627.2865 ms
+[2025-06-09 15:04:32 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 4787.2617 ms
+[2025-06-09 15:04:50 INF] HTTP POST /api/Matching/mentors-by-skills responded 200 in 198.9981 ms

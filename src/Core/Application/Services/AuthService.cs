@@ -42,6 +42,7 @@ public class AuthService : IAuthService
             Email = registerDto.Email,
             Password = passwordHash,
             Role = registerDto.Role,
+            Skills = registerDto.Skills ?? new List<string>(),
         };
         
         await _userRepository.CreateAsync(newUser);
