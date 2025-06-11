@@ -2,6 +2,7 @@ using System.Text;
 using Application.Interfaces;
 using Application.Mappings;
 using Application.Services;
+using Domain.Repositories;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure.Configuration;
@@ -53,6 +54,10 @@ builder.Services.AddScoped<ISessionRepository, SessionRepository>();
 builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<ISessionRepository, SessionRepository>();
 builder.Services.AddScoped<ISessionService, SessionService>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<IGoalRepository, GoalRepository>();
+builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<IGoalService, GoalService>();
 
 
 

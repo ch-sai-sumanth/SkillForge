@@ -274,3 +274,57 @@ System.InvalidOperationException: Only pending sessions can be declined.
 [2025-06-11 15:56:34 INF] HTTP GET /api/sessions/mentor/7022ffbf-07f9-4044-82e7-11e1dc1e4857/pending responded 200 in 6.5124 ms
 [2025-06-11 15:56:43 INF] HTTP POST /api/sessions/4c91ecec-2eb2-4b34-9ee5-56792c702744/accept responded 200 in 5.2531 ms
 [2025-06-11 15:56:46 INF] HTTP GET /api/sessions/mentor/7022ffbf-07f9-4044-82e7-11e1dc1e4857/pending responded 200 in 8.6184 ms
+[2025-06-11 16:46:31 INF] Starting up the application
+[2025-06-11 16:46:31 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 16:51:40 INF] Starting up the application
+[2025-06-11 16:51:41 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 16:52:31 INF] HTTP POST /api/tasks/assign responded 400 in 498.2345 ms
+[2025-06-11 16:53:51 INF] HTTP POST /api/tasks/assign responded 200 in 271.6866 ms
+[2025-06-11 16:54:57 INF] HTTP POST /api/tasks/assign responded 200 in 41.5835 ms
+[2025-06-11 16:56:51 INF] HTTP GET /api/tasks/mentee/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 131.5151 ms
+[2025-06-11 16:58:47 INF] HTTP GET /api/tasks/mentee/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 3.5914 ms
+[2025-06-11 16:58:58 INF] HTTP POST /api/tasks/assign responded 200 in 21.0507 ms
+[2025-06-11 16:59:00 INF] HTTP GET /api/tasks/mentee/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 2.8344 ms
+[2025-06-11 17:03:38 INF] Starting up the application
+[2025-06-11 17:03:38 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 17:03:48 INF] HTTP GET /api/tasks/mentee/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 746.8087 ms
+[2025-06-11 17:03:51 INF] HTTP GET /api/tasks/mentee/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 25.1925 ms
+[2025-06-11 17:04:12 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 400 in 67.3742 ms
+[2025-06-11 17:04:28 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 400 in 2.8204 ms
+[2025-06-11 17:04:43 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 400 in 1.2223 ms
+[2025-06-11 17:05:10 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 200 in 138.4692 ms
+[2025-06-11 17:07:16 INF] HTTP POST /api/mentee responded 200 in 84.1057 ms
+[2025-06-11 17:09:18 INF] HTTP GET /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals responded 200 in 15.6361 ms
+[2025-06-11 17:09:52 INF] HTTP GET /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals responded 200 in 5.4334 ms
+[2025-06-11 17:10:49 INF] HTTP POST /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals/fc08ab21-d66a-4c04-9243-67e69533df79/progress responded 405 in 0.2044 ms
+[2025-06-11 17:12:14 INF] Starting up the application
+[2025-06-11 17:12:14 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 17:12:23 INF] HTTP GET /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals responded 200 in 752.9393 ms
+[2025-06-11 17:17:18 INF] Starting up the application
+[2025-06-11 17:17:18 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 17:17:23 INF] HTTP GET /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals responded 200 in 796.5943 ms
+[2025-06-11 17:17:29 INF] HTTP PUT /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals/fc08ab21-d66a-4c04-9243-67e69533df79/progress responded 200 in 156.9505 ms
+[2025-06-11 17:17:32 INF] HTTP GET /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals responded 200 in 8.3639 ms
+[2025-06-11 17:36:57 INF] Starting up the application
+[2025-06-11 17:36:57 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 17:39:54 INF] HTTP GET /api/tasks/mentee/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 759.7713 ms
+[2025-06-11 17:40:02 INF] HTTP GET /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09 responded 200 in 36.0722 ms
+[2025-06-11 17:40:15 INF] HTTP GET /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09 responded 200 in 8.3070 ms
+[2025-06-11 17:40:24 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 400 in 60.7024 ms
+[2025-06-11 17:40:43 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 400 in 1.8303 ms
+[2025-06-11 17:41:04 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 200 in 84.7327 ms
+[2025-06-11 17:41:51 INF] HTTP GET /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09 responded 200 in 2.2162 ms
+[2025-06-11 17:41:54 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 200 in 9.3147 ms
+[2025-06-11 17:41:57 INF] HTTP GET /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09 responded 200 in 2.4435 ms
+[2025-06-11 17:43:31 INF] Starting up the application
+[2025-06-11 17:43:31 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 17:43:37 INF] HTTP GET /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09 responded 200 in 747.9493 ms
+[2025-06-11 17:43:41 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 200 in 140.2166 ms
+[2025-06-11 17:43:44 INF] HTTP GET /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09 responded 200 in 7.1731 ms
+[2025-06-11 17:43:55 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 200 in 8.1100 ms
+[2025-06-11 17:43:57 INF] HTTP GET /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09 responded 200 in 2.4150 ms
+[2025-06-11 17:44:48 INF] Starting up the application
+[2025-06-11 17:44:49 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 17:44:55 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09/status responded 200 in 1432.5160 ms
+[2025-06-11 17:45:27 INF] HTTP PUT /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09 responded 200 in 3605.0517 ms
+[2025-06-11 17:45:31 INF] HTTP GET /api/tasks/3e992621-bde7-4b68-bfb3-1308dd061b09 responded 200 in 100.4126 ms
