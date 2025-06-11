@@ -1,5 +1,6 @@
 using Application.DTOs;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -16,7 +17,7 @@ public class SessionController : ControllerBase
         _sessionService = sessionService;
     }
 
-    // ✅ Method names do NOT match class name
+
     [HttpPost("book")]
     public async Task<IActionResult> BookSession([FromBody] BookSessionDto bookSessionDto)
     {
@@ -30,15 +31,13 @@ public class SessionController : ControllerBase
         var sessions = await _sessionService.GetUserSessionsAsync(userId);
         return Ok(sessions);
     }
-    
-    [HttpGet]
-    [Route("{sessionId}")]
+
+    [HttpGet("{sessionId}")]
     public async Task<IActionResult> GetSession([FromRoute] string sessionId)
     {
         var session = await _sessionService.GetSessionByIdAsync(sessionId);
         if (session == null)
             return NotFound("Session not found.");
-        
         return Ok(session);
     }
 
@@ -48,4 +47,34 @@ public class SessionController : ControllerBase
         await _sessionService.CancelSessionAsync(id);
         return Ok("Session cancelled.");
     }
+
+    [HttpPut("{sessionId}")]
+    public async Task<IActionResult> UpdateSession([FromRoute] string sessionId, [FromBody] UpdateSessionDto updateSessionDto)
+    {
+        await _sessionService.UpdateSessionAsync(sessionId, updateSessionDto);
+        return Ok("Session updated.");
+    }
+
+
+    [HttpPost("{sessionId}/accept")]
+    public async Task<IActionResult> AcceptSession(string sessionId)
+    {
+        await _sessionService.AcceptSessionAsync(sessionId);
+        return Ok("Session accepted.");
+    }
+    
+    [HttpPost("{sessionId}/decline")]
+    public async Task<IActionResult> DeclineSession(string sessionId)
+    {
+        await _sessionService.DeclineSessionAsync(sessionId);
+        return Ok("Session declined.");
+    }
+    
+    [HttpGet("mentor/{mentorId}/pending")]
+    public async Task<IActionResult> GetPendingSessions(string mentorId)
+    {
+        var sessions = await _sessionService.GetPendingSessionsForMentorAsync(mentorId);
+        return Ok(sessions);
+    }
+    
 }

@@ -10,4 +10,8 @@ public interface ISessionService
     Task CancelSessionAsync(string sessionId);
 
     Task<Session?> GetSessionByIdAsync(string sessionId);
+    Task UpdateSessionAsync(string id,UpdateSessionDto updateSessionDto);
+    Task AcceptSessionAsync(string sessionId);
+    Task DeclineSessionAsync(string sessionId);
+    Task<List<Session>> GetPendingSessionsForMentorAsync(string mentorId);
 }

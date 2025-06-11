@@ -35,4 +35,11 @@ public class SessionRepository : ISessionRepository
         await _users.UpdateOneAsync(u => u.Id == mentorId, update);
     }
 
+    public Task<List<Session>> GetSessionsByMentorAndStatusAsync(string mentorId, string pending)
+    {
+       List<Session> sessions= _sessionsCollection.AsQueryable()
+            .Where(s => s.MentorId == mentorId && s.Status == pending)
+            .ToList();
+         return Task.FromResult(sessions);
+    }
 }

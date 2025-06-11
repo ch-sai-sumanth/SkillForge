@@ -13,6 +13,5 @@ public interface ISessionRepository
     Task<List<Session>> GetSessionsByUserIdAsync(string userId);
     Task<List<MentorAvailability>> GetMentorAvailabilityAsync(string mentorId);
     Task UpdateMentorAvailabilityAsync(string mentorId, List<MentorAvailability> updatedAvailability);
-
-
+    Task<List<Session>> GetSessionsByMentorAndStatusAsync(string mentorId, string pending);
 }

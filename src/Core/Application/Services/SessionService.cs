@@ -6,6 +6,7 @@ using User.Domain.Repositories;
 namespace Application.Services;
 
 public class SessionService : ISessionService
+    
 {
     private readonly ISessionRepository _sessionRepository;
     private readonly IUserRepository _userRepository;
@@ -43,12 +44,13 @@ public class SessionService : ISessionService
 
         var session = new Session
         {
+            Id = Guid.NewGuid().ToString(),
             MentorId = dto.MentorId,
             MenteeId = dto.MenteeId,
             StartTime = dto.StartTime,
             EndTime = dto.EndTime,
             Topic = dto.Topic,
-            Status = "Scheduled"
+            Status = "Pending"
         };
 
         await _sessionRepository.CreateAsync(session);
@@ -66,14 +68,14 @@ public class SessionService : ISessionService
             requestedEnd <= a.EndTime);
     }
 
-    private async Task<bool> IsSessionSlotFreeAsync(string mentorId, DateTime start, DateTime end)
+    private async Task<bool> IsSessionSlotFreeAsync(string mentorId, DateTime start, DateTime end, string? excludeSessionId = null)
     {
         var sessions = await _sessionRepository.GetSessionsByUserIdAsync(mentorId);
 
-        return sessions.All(s =>
-            s.EndTime <= start || s.StartTime >= end);
+        return sessions
+            .Where(s => s.Id != excludeSessionId)
+            .All(s => s.EndTime <= start || s.StartTime >= end);
     }
-
 
     public async Task CancelSessionAsync(string sessionId)
     {
@@ -112,7 +114,7 @@ public class SessionService : ISessionService
             throw new InvalidOperationException("Session not found.");
         return session;
     }
-
+    
     private List<MentorAvailability> MergeAvailabilitySlots(List<MentorAvailability> slots)
     {
         var sorted = slots
@@ -142,5 +144,55 @@ public class SessionService : ISessionService
         }
 
         return merged;
+    }
+    
+    public async Task UpdateSessionAsync(string sessionId, UpdateSessionDto dto)
+    {
+        var session = await _sessionRepository.GetByIdAsync(sessionId);
+        if (session == null)
+            throw new InvalidOperationException("Session not found.");
+        
+        session.StartTime = dto.StartTime;
+        session.EndTime = dto.EndTime;
+        session.Topic = dto.Topic;
+        session.MeetingLink = dto.MeetingLink;
+        session.Notes = dto.Notes;
+
+        await _sessionRepository.UpdateAsync(session);
+    }
+
+    public async Task AcceptSessionAsync(string sessionId)
+    {
+        var session = await _sessionRepository.GetByIdAsync(sessionId);
+        if (session == null)
+            throw new InvalidOperationException("Session not found.");
+
+        if (session.Status != "Pending")
+            throw new InvalidOperationException("Only pending sessions can be accepted.");
+
+        session.Status = "Scheduled";
+        await _sessionRepository.UpdateAsync(session);
+    }
+
+    public async Task DeclineSessionAsync(string sessionId)
+    {
+        var session = await _sessionRepository.GetByIdAsync(sessionId);
+        if (session == null)
+            throw new InvalidOperationException("Session not found.");
+
+        if (session.Status != "Pending")
+            throw new InvalidOperationException("Only pending sessions can be declined.");
+
+        session.Status = "Declined";
+        await _sessionRepository.UpdateAsync(session);
+    }
+
+    public async Task<List<Session>> GetPendingSessionsForMentorAsync(string mentorId)
+    {
+        var mentor = await _userRepository.GetByIdAsync(mentorId);
+        if (mentor == null || mentor.Role != "Mentor")
+            throw new UnauthorizedAccessException("Only mentors can view pending sessions.");
+
+        return await _sessionRepository.GetSessionsByMentorAndStatusAsync(mentorId, "Pending");
     }
 }
