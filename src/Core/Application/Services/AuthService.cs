@@ -38,6 +38,7 @@ public class AuthService : IAuthService
         var newUser = new UserEntity()
         {
             Id = Guid.NewGuid().ToString(),
+            Name = registerDto.Name,
             Username = registerDto.Username,
             Email = registerDto.Email,
             Password = passwordHash,

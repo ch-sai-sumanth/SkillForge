@@ -88,7 +88,7 @@ public class UserService : IUserService
         user.Name = dto.Name;
         user.Email = dto.Email;
         user.Username = dto.Username;
-        user.Skills = dto.Skills;
+        user.Skills = dto.Skills.Select(s=>s.ToLower()).ToList();
 
         await _userRepository.UpdateAsync(user);
         _logger.LogInformation("User '{Username}' Profile updated", user.Username);
@@ -100,7 +100,7 @@ public class UserService : IUserService
             Name = user.Name,
             Email = user.Email,
             Username = user.Username,
-            Skills = user.Skills
+            Skills =  user.Skills   
         };
     }
     
@@ -125,8 +125,7 @@ public class UserService : IUserService
     
     public async Task<List<MentorMatchDto>> GetMentorsBySkillsWithScoreAsync(List<string> skills)
     {
-        var mentors = await _userRepository.GetMentorsBySkillsAsync(skills);
-    
+        var mentors = await _userRepository.GetMentorsBySkillsAsync(skills.Select(s => s.ToLower()).ToList());    
         var mentorMatches = mentors.Select(mentor =>
             {
                 var matchedSkillsCount = mentor.Skills.Intersect(skills, StringComparer.OrdinalIgnoreCase).Count();
@@ -147,9 +146,9 @@ public class UserService : IUserService
         var mentor = await _userRepository.GetByIdAsync(mentorId);
         if (mentor == null) throw new Exception("Mentor not found");
 
-        mentor.Availabilities = availabilityDtos.Select(a => new Availability
+        mentor.Availabilities = availabilityDtos.Select(a => new MentorAvailability
         {
-            Day = a.Day,
+            MentorId = mentorId,
             StartTime = a.StartTime,
             EndTime = a.EndTime
         }).ToList();
@@ -157,14 +156,15 @@ public class UserService : IUserService
         await _userRepository.UpdateAsync(mentor);
     }
     
-    public async Task<List<UserDto>> SearchMentorsBySkillAndAvailabilityAsync(string skill, DayOfWeek day, TimeSpan time)
+
+    public async Task<List<UserDto>> SearchMentorsBySkillAndAvailabilityAsync(string skill, DateTime desiredDateTime)
     {
         var mentors = await _userRepository.GetMentorsBySkillAsync(skill);
 
-        var availableMentors = mentors.Where(m => m.Availabilities.Any(a =>
-            a.Day == day &&
-            a.StartTime <= time &&
-            a.EndTime >= time)).ToList();
+        var availableMentors = mentors
+            .Where(m => m.Availabilities.Any(a =>
+                desiredDateTime >= a.StartTime && desiredDateTime <= a.EndTime))
+            .ToList();
 
         return availableMentors.Select(m => _mapper.Map<UserDto>(m)).ToList();
     }
@@ -175,7 +175,7 @@ public class UserService : IUserService
         var user = await _userRepository.GetByIdAsync(userId);
         if (user == null) return false;
 
-        user.Skills = skills;
+        user.Skills = skills.Select(s=>s.ToLower()).ToList();
         await _userRepository.UpdateAsync(user);
 
         return true;

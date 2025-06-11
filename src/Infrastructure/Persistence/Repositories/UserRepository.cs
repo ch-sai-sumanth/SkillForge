@@ -61,7 +61,9 @@ public class UserRepository : IUserRepository
 
     public async Task<List<UserEntity>> GetMentorsBySkillAsync(string skill)
     {
-        return await _mongoCollection.Find(u => u.Role == "Mentor" && u.Skills.Contains(skill)).ToListAsync();
+        var filter = Builders<UserEntity>.Filter.Regex(u => u.Skills, new MongoDB.Bson.BsonRegularExpression($"^{skill}$", "i"));
+        return await _mongoCollection.Find(filter).ToListAsync();
+        
     }
 
 }

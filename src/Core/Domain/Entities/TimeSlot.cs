@@ -1,6 +1,6 @@
-namespace Application.DTOs;
+namespace User.Domain.Entities;
 
-public class AvailabilityDto
+public class TimeSlot
 {
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }

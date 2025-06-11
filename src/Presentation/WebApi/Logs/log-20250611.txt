@@ -1,0 +1,222 @@
+[2025-06-11 09:36:35 INF] Starting up the application
+[2025-06-11 09:36:36 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 09:37:03 INF] User 'sai' validation is done
+[2025-06-11 09:37:03 INF] JWT Token generated for user ''
+[2025-06-11 09:37:03 INF] New Refresh token generated
+[2025-06-11 09:37:03 INF] User '' logged in Successfully
+[2025-06-11 09:37:03 INF] HTTP POST /api/Auth/login responded 200 in 1503.5999 ms
+[2025-06-11 09:39:55 INF] HTTP PUT /api/mentors/7022ffbf-07f9-4044-82e7-11e1dc1e4857/availability responded 400 in 74.4570 ms
+[2025-06-11 09:51:47 INF] Starting up the application
+[2025-06-11 09:51:47 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 09:52:00 INF] User 'sai' validation is done
+[2025-06-11 09:52:00 INF] JWT Token generated for user ''
+[2025-06-11 09:52:00 INF] New Refresh token generated
+[2025-06-11 09:52:00 INF] User '' logged in Successfully
+[2025-06-11 09:52:00 INF] HTTP POST /api/Auth/login responded 200 in 1719.0161 ms
+[2025-06-11 09:52:25 INF] HTTP PUT /api/mentors/7022ffbf-07f9-4044-82e7-11e1dc1e4857/availability responded 200 in 55.6854 ms
+[2025-06-11 09:53:15 INF] Starting up the application
+[2025-06-11 09:53:15 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 09:59:32 INF] HTTP PUT /api/mentors/7022ffbf-07f9-4044-82e7-11e1dc1e4857/skills responded 400 in 595.8699 ms
+[2025-06-11 10:37:45 INF] Starting up the application
+[2025-06-11 10:37:46 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 10:37:57 INF] User 'sai' validation is done
+[2025-06-11 10:37:57 INF] JWT Token generated for user ''
+[2025-06-11 10:37:57 INF] New Refresh token generated
+[2025-06-11 10:37:57 INF] User '' logged in Successfully
+[2025-06-11 10:37:57 INF] HTTP POST /api/Auth/login responded 200 in 3112.4379 ms
+[2025-06-11 10:38:02 INF] HTTP PUT /api/mentors/7022ffbf-07f9-4044-82e7-11e1dc1e4857/availability responded 200 in 108.0303 ms
+[2025-06-11 10:38:17 INF] HTTP GET /api/User responded 200 in 136.9506 ms
+[2025-06-11 10:38:40 INF] HTTP PUT /api/mentors/7022ffbf-07f9-4044-82e7-11e1dc1e4857/skills responded 400 in 52.6401 ms
+[2025-06-11 10:39:06 INF] HTTP PUT /api/mentors/7022ffbf-07f9-4044-82e7-11e1dc1e4857/skills responded 200 in 37.8996 ms
+[2025-06-11 10:39:54 INF] HTTP GET /api/mentees/available-mentors responded 400 in 11.2256 ms
+[2025-06-11 10:40:18 INF] HTTP GET /api/mentees/available-mentors responded 200 in 25.6208 ms
+[2025-06-11 10:40:58 INF] HTTP GET /api/mentees/available-mentors responded 200 in 3.1574 ms
+[2025-06-11 10:41:39 INF] HTTP GET /api/mentees/available-mentors responded 400 in 1.3840 ms
+[2025-06-11 10:41:54 INF] HTTP GET /api/mentees/available-mentors responded 200 in 2.7008 ms
+[2025-06-11 10:42:29 INF] HTTP GET /api/mentees/available-mentors responded 200 in 3.4469 ms
+[2025-06-11 10:43:31 INF] Starting up the application
+[2025-06-11 10:43:31 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 10:49:02 INF] HTTP GET /api/mentees/available-mentors responded 200 in 278493.1533 ms
+[2025-06-11 10:49:09 INF] HTTP GET /api/mentees/available-mentors responded 200 in 2207.2682 ms
+[2025-06-11 11:12:59 INF] HTTP GET /api/mentees/available-mentors responded 200 in 3157.4963 ms
+[2025-06-11 11:22:13 INF] Starting up the application
+[2025-06-11 11:22:13 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 11:22:18 INF] HTTP GET /api/mentees/available-mentors responded 200 in 845.1310 ms
+[2025-06-11 11:22:25 INF] HTTP GET /api/mentees/available-mentors responded 200 in 27.5581 ms
+[2025-06-11 11:22:31 INF] HTTP GET /api/mentees/available-mentors responded 200 in 8.1645 ms
+[2025-06-11 11:22:35 INF] HTTP GET /api/mentees/available-mentors responded 200 in 2.4148 ms
+[2025-06-11 11:38:54 INF] Starting up the application
+[2025-06-11 11:38:55 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 11:39:06 INF] HTTP GET /api/sessions/user/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 200 in 688.7089 ms
+[2025-06-11 11:39:21 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Selected time is outside the mentor's available hours.
+   at Application.Services.SessionService.BookSessionAsync(BookSessionDto dto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/SessionService.cs:line 25
+   at API.Controllers.SessionController.BookSession(BookSessionDto bookSessionDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/SessionController.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-11 11:39:21 ERR] HTTP POST /api/sessions/book responded 500 in 127.2611 ms
+[2025-06-11 11:40:31 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Selected time is outside the mentor's available hours.
+   at Application.Services.SessionService.BookSessionAsync(BookSessionDto dto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/SessionService.cs:line 25
+   at API.Controllers.SessionController.BookSession(BookSessionDto bookSessionDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/SessionController.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-11 11:40:31 ERR] HTTP POST /api/sessions/book responded 500 in 12.0278 ms
+[2025-06-11 11:42:29 INF] HTTP GET /api/sessions/user/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 200 in 4.0780 ms
+[2025-06-11 11:42:43 INF] HTTP PUT /api/mentors/7022ffbf-07f9-4044-82e7-11e1dc1e4857/availability responded 200 in 295.5876 ms
+[2025-06-11 11:43:03 INF] HTTP GET /api/sessions/user/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 200 in 2.6403 ms
+[2025-06-11 11:43:08 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Selected time is outside the mentor's available hours.
+   at Application.Services.SessionService.BookSessionAsync(BookSessionDto dto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/SessionService.cs:line 25
+   at API.Controllers.SessionController.BookSession(BookSessionDto bookSessionDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/SessionController.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-11 11:43:08 ERR] HTTP POST /api/sessions/book responded 500 in 4.8054 ms
+[2025-06-11 11:43:31 INF] Starting up the application
+[2025-06-11 11:43:32 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 11:44:20 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Selected time is outside the mentor's available hours.
+   at Application.Services.SessionService.BookSessionAsync(BookSessionDto dto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/SessionService.cs:line 25
+   at API.Controllers.SessionController.BookSession(BookSessionDto bookSessionDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/SessionController.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-11 11:44:20 ERR] HTTP POST /api/sessions/book responded 500 in 42793.7183 ms
+[2025-06-11 11:45:43 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Selected time is outside the mentor's available hours.
+   at Application.Services.SessionService.BookSessionAsync(BookSessionDto dto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/SessionService.cs:line 25
+   at API.Controllers.SessionController.BookSession(BookSessionDto bookSessionDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/SessionController.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-11 11:45:43 ERR] HTTP POST /api/sessions/book responded 500 in 81045.4859 ms
+[2025-06-11 11:46:07 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Selected time is outside the mentor's available hours.
+   at Application.Services.SessionService.BookSessionAsync(BookSessionDto dto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/SessionService.cs:line 25
+   at API.Controllers.SessionController.BookSession(BookSessionDto bookSessionDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/SessionController.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-11 11:46:07 ERR] HTTP POST /api/sessions/book responded 500 in 1618.7627 ms
+[2025-06-11 11:55:27 INF] Starting up the application
+[2025-06-11 11:55:27 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 11:55:33 INF] HTTP POST /api/sessions/book responded 200 in 892.4976 ms
+[2025-06-11 11:58:01 INF] HTTP GET /api/mentees/available-mentors responded 200 in 195.7371 ms
+[2025-06-11 12:00:47 ERR] Unhandled exception occurred.
+System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at Application.Services.SessionService..ctor(ISessionRepository repository)
+   at InvokeStub_SessionService..ctor(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at lambda_method52(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-11 12:00:47 ERR] HTTP POST /api/sessions/book responded 500 in 58.0560 ms
+[2025-06-11 12:01:11 INF] Starting up the application
+[2025-06-11 12:01:11 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 12:01:18 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Mentor does not have the required skill/topic.
+   at Application.Services.SessionService.BookSessionAsync(BookSessionDto dto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/SessionService.cs:line 34
+   at API.Controllers.SessionController.BookSession(BookSessionDto bookSessionDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/SessionController.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-11 12:01:18 ERR] HTTP POST /api/sessions/book responded 500 in 833.0355 ms
+[2025-06-11 12:01:25 INF] HTTP POST /api/sessions/book responded 200 in 178.4029 ms
+[2025-06-11 12:01:29 INF] HTTP GET /api/sessions/user/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 200 in 35.4055 ms
+[2025-06-11 12:02:00 INF] HTTP GET /api/sessions/user/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 200 in 3.5058 ms
+[2025-06-11 12:02:40 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 404 in 0.2503 ms
+[2025-06-11 12:05:05 INF] Starting up the application
+[2025-06-11 12:05:06 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 12:05:11 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 404 in 33.6156 ms
+[2025-06-11 12:06:36 INF] Starting up the application
+[2025-06-11 12:06:37 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 12:06:41 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 404 in 193.6118 ms
+[2025-06-11 12:06:55 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 404 in 1.8500 ms
+[2025-06-11 12:07:41 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 404 in 1.4585 ms
+[2025-06-11 12:07:43 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 404 in 0.1437 ms
+[2025-06-11 12:08:19 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 404 in 4.2745 ms
+[2025-06-11 12:08:21 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 404 in 0.4209 ms
+[2025-06-11 12:08:21 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 404 in 0.1788 ms
+[2025-06-11 12:08:39 INF] Starting up the application
+[2025-06-11 12:08:39 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-11 12:08:48 INF] HTTP GET /api/sessions/3e67d3c4-f29e-42af-86be-693d99c6c0a8 responded 200 in 5723.3256 ms
