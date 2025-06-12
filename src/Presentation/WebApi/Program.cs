@@ -1,5 +1,7 @@
 using System.Text;
+using Application.DTOs;
 using Application.Interfaces;
+using Application.Interfaces.Repositories;
 using Application.Mappings;
 using Application.Services;
 using Domain.Repositories;
@@ -14,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
 using Serilog;
+using User.Domain.Entities;
 using User.Domain.Repositories;
 using WebApi.Validators;
 
@@ -44,6 +47,11 @@ builder.Services.Configure<MongoDbSettings>(
 
 // Register AutoMapper
 builder.Services.AddAutoMapper(typeof(UserProfile));
+builder.Services.AddAutoMapper(typeof(SubscriptionPlanProfile));
+builder.Services.AddAutoMapper(typeof(MentorRateProfile));
+builder.Services.AddAutoMapper(typeof(PaymentProfile));
+builder.Services.AddAutoMapper(typeof(UserSubscriptionProfile));
+
 
 // Register the UserRepository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -55,9 +63,18 @@ builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<ISessionRepository, SessionRepository>();
 builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
-builder.Services.AddScoped<IGoalRepository, GoalRepository>();
 builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<IGoalRepository, GoalRepository>();
 builder.Services.AddScoped<IGoalService, GoalService>();
+
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<ISubscriptionPlanRepository, SubscriptionPlanRepository>();
+builder.Services.AddScoped<ISubscriptionPlanService, SubscriptionPlanService>();
+builder.Services.AddScoped<IUserSubscriptionRepository, UserSubscriptionRepository>();
+builder.Services.AddScoped<IUserSubscriptionService, UserSubscriptionService>();
+builder.Services.AddScoped<IMentorRateRepository, MentorRateRepository>();
+builder.Services.AddScoped<IMentorRateService, MentorRateService>();
 
 
 
@@ -143,6 +160,8 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

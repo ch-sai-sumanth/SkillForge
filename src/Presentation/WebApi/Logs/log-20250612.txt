@@ -1,0 +1,224 @@
+[2025-06-12 12:51:31 INF] Starting up the application
+[2025-06-12 12:51:31 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 14:41:34 INF] Starting up the application
+[2025-06-12 14:41:34 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 14:48:39 INF] Starting up the application
+[2025-06-12 14:48:39 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 14:48:57 INF] User 'sai' validation is done
+[2025-06-12 14:48:57 INF] JWT Token generated for user ''
+[2025-06-12 14:48:57 INF] New Refresh token generated
+[2025-06-12 14:48:57 INF] User '' logged in Successfully
+[2025-06-12 14:48:57 INF] HTTP POST /api/Auth/login responded 200 in 1554.9520 ms
+[2025-06-12 14:49:00 INF] User 'sumanth' validation is done
+[2025-06-12 14:49:00 INF] JWT Token generated for user ''
+[2025-06-12 14:49:00 INF] New Refresh token generated
+[2025-06-12 14:49:00 INF] User '' logged in Successfully
+[2025-06-12 14:49:00 INF] HTTP POST /api/Auth/login responded 200 in 308.1915 ms
+[2025-06-12 14:49:53 INF] User 'sai' validation is done
+[2025-06-12 14:49:53 INF] JWT Token generated for user ''
+[2025-06-12 14:49:53 INF] New Refresh token generated
+[2025-06-12 14:49:53 INF] User '' logged in Successfully
+[2025-06-12 14:49:53 INF] HTTP POST /api/Auth/login responded 200 in 195.5096 ms
+[2025-06-12 14:49:56 INF] User 'sumanth' validation is done
+[2025-06-12 14:49:56 INF] JWT Token generated for user ''
+[2025-06-12 14:49:56 INF] New Refresh token generated
+[2025-06-12 14:49:56 INF] User '' logged in Successfully
+[2025-06-12 14:49:56 INF] HTTP POST /api/Auth/login responded 200 in 192.3383 ms
+[2025-06-12 14:50:45 INF] HTTP GET /api/Profile/me responded 200 in 89.8426 ms
+[2025-06-12 14:51:04 INF] HTTP GET /api/sessions/user/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 200 in 44.6349 ms
+[2025-06-12 14:52:23 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Unable to resolve service for type 'Application.Interfaces.IMentorRateService' while attempting to activate 'API.Controllers.MentorRateController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method92(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-12 14:52:23 ERR] HTTP GET /api/MentorRate/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 500 in 50.8955 ms
+[2025-06-12 14:53:36 INF] Starting up the application
+[2025-06-12 14:53:36 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 14:53:45 INF] HTTP GET /api/MentorRate/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 404 in 946.7331 ms
+[2025-06-12 14:54:00 INF] HTTP POST /api/MentorRate/set responded 200 in 247.3754 ms
+[2025-06-12 14:54:07 INF] HTTP GET /api/MentorRate/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 200 in 33.4550 ms
+[2025-06-12 14:54:18 INF] HTTP DELETE /api/MentorRate/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 200 in 25.2971 ms
+[2025-06-12 14:54:21 INF] HTTP GET /api/MentorRate/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 404 in 3.2445 ms
+[2025-06-12 14:54:23 INF] HTTP POST /api/MentorRate/set responded 200 in 5.0024 ms
+[2025-06-12 14:54:30 INF] HTTP GET /api/MentorRate/7022ffbf-07f9-4044-82e7-11e1dc1e4857 responded 200 in 3.4461 ms
+[2025-06-12 14:55:44 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 36.7917 ms
+[2025-06-12 14:56:03 INF] HTTP POST /api/subscriptionPlan/create responded 200 in 70.2037 ms
+[2025-06-12 14:56:06 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 10.5514 ms
+[2025-06-12 14:58:13 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 5.8890 ms
+[2025-06-12 14:58:15 ERR] Unhandled exception occurred.
+System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at Application.DTOs.CreateSubscriptionPlanDto.get_Name()
+   at Microsoft.Extensions.Internal.PropertyHelper.CallNullSafePropertyGetter[TDeclaringType,TValue](Func`2 getter, Object target)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationEntry.get_Model()
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitChildren(IValidationStrategy strategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitComplexType(IValidationStrategy defaultStrategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at FluentValidation.AspNetCore.FluentValidationVisitor.<>n__1(ModelMetadata metadata, String key, Object model, Boolean alwaysValidateAtTopLevel, Object container)
+   at FluentValidation.AspNetCore.FluentValidationVisitor.<>c__DisplayClass2_0.<Validate>g__BaseValidate|0() in /_/src/FluentValidation.AspNetCore/FluentValidationVisitor.cs:line 45
+   at FluentValidation.AspNetCore.FluentValidationVisitor.ValidateInternal(ModelMetadata metadata, String key, Object model, Func`1 continuation) in /_/src/FluentValidation.AspNetCore/FluentValidationVisitor.cs:line 63
+   at FluentValidation.AspNetCore.FluentValidationVisitor.Validate(ModelMetadata metadata, String key, Object model, Boolean alwaysValidateAtTopLevel, Object container) in /_/src/FluentValidation.AspNetCore/FluentValidationVisitor.cs:line 47
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ObjectModelValidator.Validate(ActionContext actionContext, ValidationStateDictionary validationState, String prefix, Object model, ModelMetadata metadata, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.EnforceBindRequiredAndValidate(ObjectModelValidator baseObjectValidator, ActionContext actionContext, ParameterDescriptor parameter, ModelMetadata metadata, ModelBindingContext modelBindingContext, ModelBindingResult modelBindingResult, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-12 14:58:15 ERR] HTTP POST /api/subscriptionPlan/create responded 500 in 60.5136 ms
+[2025-06-12 14:59:17 INF] Starting up the application
+[2025-06-12 14:59:17 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 14:59:23 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 897.6684 ms
+[2025-06-12 14:59:26 INF] HTTP POST /api/subscriptionPlan/create responded 200 in 199.5702 ms
+[2025-06-12 14:59:29 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 40.0134 ms
+[2025-06-12 15:03:27 INF] Starting up the application
+[2025-06-12 15:03:27 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 15:03:49 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 900.1192 ms
+[2025-06-12 15:03:54 INF] HTTP POST /api/subscriptionPlan/create responded 200 in 206.1967 ms
+[2025-06-12 15:03:58 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 37.1891 ms
+[2025-06-12 15:05:54 INF] Starting up the application
+[2025-06-12 15:05:54 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 15:05:59 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 923.7296 ms
+[2025-06-12 15:07:01 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 21.9038 ms
+[2025-06-12 15:07:22 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 8.0278 ms
+[2025-06-12 15:07:28 INF] HTTP GET /api/subscriptionPlan/{{subscriptionPlanId}} responded 404 in 128.1108 ms
+[2025-06-12 15:07:58 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 2.5346 ms
+[2025-06-12 15:08:01 INF] HTTP GET /api/subscriptionPlan/23868785-b72e-4812-b55f-705313f61229 responded 200 in 6.8936 ms
+[2025-06-12 15:08:34 INF] HTTP DELETE /api/subscriptionPlan/update/23868785-b72e-4812-b55f-705313f61229 responded 405 in 0.4774 ms
+[2025-06-12 15:08:41 INF] HTTP DELETE /api/subscriptionPlan/23868785-b72e-4812-b55f-705313f61229 responded 405 in 0.6921 ms
+[2025-06-12 15:08:58 INF] HTTP DELETE /api/subscriptionPlan/delete/23868785-b72e-4812-b55f-705313f61229 responded 200 in 87.7035 ms
+[2025-06-12 15:09:01 INF] HTTP GET /api/subscriptionPlan/23868785-b72e-4812-b55f-705313f61229 responded 404 in 3.6605 ms
+[2025-06-12 15:09:06 INF] HTTP POST /api/subscriptionPlan/create responded 200 in 52.4626 ms
+[2025-06-12 15:09:08 INF] HTTP GET /api/subscriptionPlan/all responded 200 in 1.8671 ms
+[2025-06-12 15:09:38 INF] HTTP GET /api/subscriptionPlan/update/1aca3486-0b37-434f-bcc4-cd5df0153ae5 responded 405 in 0.6288 ms
+[2025-06-12 15:13:52 INF] Starting up the application
+[2025-06-12 15:13:52 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 15:14:02 INF] HTTP GET /api/subscriptionPlan/1aca3486-0b37-434f-bcc4-cd5df0153ae5 responded 200 in 968.8419 ms
+[2025-06-12 15:14:37 INF] HTTP GET /api/subscriptionPlan/update/1aca3486-0b37-434f-bcc4-cd5df0153ae5 responded 405 in 2.0624 ms
+[2025-06-12 15:15:49 INF] HTTP GET /api/subscriptionPlan/update/1aca3486-0b37-434f-bcc4-cd5df0153ae5 responded 405 in 2.4287 ms
+[2025-06-12 15:16:27 INF] HTTP PUT /api/subscriptionPlan/update/1aca3486-0b37-434f-bcc4-cd5df0153ae5 responded 200 in 245.8697 ms
+[2025-06-12 15:16:30 INF] HTTP GET /api/subscriptionPlan/1aca3486-0b37-434f-bcc4-cd5df0153ae5 responded 200 in 7.1500 ms
+[2025-06-12 15:17:17 INF] HTTP GET /api/userSubscription/a1c99267-505d-4fb0-833c-abaedb160be5 responded 404 in 22.7191 ms
+[2025-06-12 15:17:22 INF] HTTP GET /api/userSubscription/is-subscribed/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 15.3735 ms
+[2025-06-12 15:17:29 INF] HTTP GET /api/userSubscription/all responded 200 in 33.5224 ms
+[2025-06-12 15:17:33 INF] HTTP DELETE /api/userSubscription/cancel/a1c99267-505d-4fb0-833c-abaedb160be5 responded 405 in 0.5175 ms
+[2025-06-12 15:18:35 INF] HTTP POST /api/userSubscription/cancel/a1c99267-505d-4fb0-833c-abaedb160be5 responded 400 in 11.0695 ms
+[2025-06-12 15:18:48 INF] HTTP GET /api/mentees/available-mentors responded 200 in 57.5020 ms
+[2025-06-12 15:19:07 INF] HTTP POST /api/userSubscription/subscribe responded 200 in 69.5233 ms
+[2025-06-12 15:19:10 INF] HTTP GET /api/userSubscription/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 14.8296 ms
+[2025-06-12 15:19:14 INF] HTTP GET /api/userSubscription/is-subscribed/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 2.7148 ms
+[2025-06-12 15:19:16 INF] HTTP GET /api/userSubscription/all responded 200 in 1.7148 ms
+[2025-06-12 15:19:40 INF] HTTP POST /api/userSubscription/cancel/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 8.4169 ms
+[2025-06-12 15:19:43 INF] HTTP GET /api/userSubscription/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 3.6864 ms
+[2025-06-12 15:20:04 INF] HTTP POST /api/userSubscription/cancel/a1c99267-505d-4fb0-833c-abaedb160be5 responded 400 in 2.3861 ms
+[2025-06-12 15:20:09 INF] HTTP GET /api/userSubscription/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 3.1222 ms
+[2025-06-12 15:20:25 INF] HTTP POST /api/userSubscription/subscribe responded 200 in 2.8154 ms
+[2025-06-12 15:20:27 INF] HTTP GET /api/userSubscription/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 2.5243 ms
+[2025-06-12 15:20:31 INF] HTTP GET /api/userSubscription/is-subscribed/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 2.3864 ms
+[2025-06-12 15:20:34 INF] HTTP GET /api/userSubscription/all responded 200 in 2.0554 ms
+[2025-06-12 15:21:19 INF] HTTP GET /api/userSubscription/all responded 200 in 1.6494 ms
+[2025-06-12 15:21:55 INF] HTTP POST /api/userSubscription/subscribe responded 200 in 10.3390 ms
+[2025-06-12 15:21:57 INF] HTTP GET /api/userSubscription/all responded 200 in 6.5377 ms
+[2025-06-12 15:21:59 INF] HTTP POST /api/userSubscription/cancel/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 9.4727 ms
+[2025-06-12 15:22:01 INF] HTTP GET /api/userSubscription/all responded 200 in 2.5115 ms
+[2025-06-12 15:32:01 INF] HTTP POST /api/payment/record responded 200 in 76.6667 ms
+[2025-06-12 15:33:47 ERR] Unhandled exception occurred.
+MongoDB.Bson.BsonSerializationException: An error occurred while serializing the UTR property of class User.Domain.Entities.Payment: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+ ---> System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at User.Domain.Entities.Payment.get_UTR()
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.SerializeNormalMember(BsonSerializationContext context, Object obj, BsonMemberMap memberMap)
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.SerializeMember(BsonSerializationContext context, Object obj, BsonMemberMap memberMap)
+   --- End of inner exception stack trace ---
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.SerializeMember(BsonSerializationContext context, Object obj, BsonMemberMap memberMap)
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.SerializeClass(BsonSerializationContext context, BsonSerializationArgs args, TClass document)
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.Serialize(BsonSerializationContext context, BsonSerializationArgs args, TClass value)
+   at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Serialize(IBsonSerializer serializer, BsonSerializationContext context, Object value)
+   at MongoDB.Bson.Serialization.Serializers.BsonDocumentWrapperSerializer.SerializeValue(BsonSerializationContext context, BsonSerializationArgs args, BsonDocumentWrapper value)
+   at MongoDB.Bson.Serialization.Serializers.BsonValueSerializerBase`1.Serialize(BsonSerializationContext context, BsonSerializationArgs args, TBsonValue value)
+   at MongoDB.Bson.Serialization.Serializers.BsonValueSerializerBase`1.Serialize(BsonSerializationContext context, BsonSerializationArgs args, TBsonValue value)
+   at MongoDB.Driver.Core.Operations.BulkInsertOperation.InsertRequestSerializer.SerializeValue(BsonSerializationContext context, BsonSerializationArgs args, InsertRequest value)
+   at MongoDB.Bson.Serialization.Serializers.SealedClassSerializerBase`1.Serialize(BsonSerializationContext context, BsonSerializationArgs args, TValue value)
+   at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Serialize(IBsonSerializer serializer, BsonSerializationContext context, Object value)
+   at MongoDB.Driver.Core.WireProtocol.Messages.Encoders.BinaryEncoders.Type1SectionFormatter.FormatSection(Type1CommandMessageSection section, IBsonWriter writer)
+   at MongoDB.Driver.Core.WireProtocol.Messages.Encoders.BinaryEncoders.CommandMessageBinaryEncoder.WriteSection(BsonBinaryWriter writer, CommandMessageSection section, Int64 messageStartPosition)
+   at MongoDB.Driver.Core.WireProtocol.Messages.Encoders.BinaryEncoders.CommandMessageBinaryEncoder.WriteSections(BsonBinaryWriter writer, IEnumerable`1 sections, Int64 messageStartPosition)
+   at MongoDB.Driver.Core.WireProtocol.Messages.Encoders.BinaryEncoders.CommandMessageBinaryEncoder.WriteMessage(CommandMessage message)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.SendMessagesHelper.EncodeMessages(CancellationToken cancellationToken, List`1& sentMessages)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.SendMessagesAsync(IEnumerable`1 messages, MessageEncoderSettings messageEncoderSettings, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.ConnectionPools.ExclusiveConnectionPool.PooledConnection.SendMessagesAsync(IEnumerable`1 messages, MessageEncoderSettings messageEncoderSettings, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.WireProtocol.CommandUsingCommandMessageWireProtocol`1.SendMessageAndProcessResponseAsync(CommandRequestMessage message, Int32 responseTo, IConnection connection, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.WireProtocol.CommandUsingCommandMessageWireProtocol`1.ExecuteAsync(IConnection connection, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.Server.ServerChannel.ExecuteProtocolAsync[TResult](IWireProtocol`1 protocol, ICoreSession session, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.RetryableWriteOperationExecutor.ExecuteAsync[TResult](IRetryableWriteOperation`1 operation, RetryableWriteContext context, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.BulkUnmixedWriteOperationBase`1.ExecuteBatchAsync(RetryableWriteContext context, Batch batch, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.BulkUnmixedWriteOperationBase`1.ExecuteBatchesAsync(RetryableWriteContext context, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.BulkMixedWriteOperation.ExecuteBatchAsync(RetryableWriteContext context, Batch batch, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.BulkMixedWriteOperation.ExecuteAsync(IWriteBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.OperationExecutor.ExecuteWriteOperationAsync[TResult](IWriteBinding binding, IWriteOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.ExecuteWriteOperationAsync[TResult](IClientSessionHandle session, IWriteOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.InsertOneAsync(TDocument document, InsertOneOptions options, Func`3 bulkWriteAsync)
+   at Infrastructure.Repositories.PaymentRepository.CreateAsync(Payment payment) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Infrastructure/Persistence/Repositories/PaymentRepository.cs:line 18
+   at Application.Services.PaymentService.RecordPaymentAsync(RecordPaymentDto dto)
+   at API.Controllers.PaymentController.RecordPayment(RecordPaymentDto dto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/PaymentController.cs:line 22
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-12 15:33:47 ERR] HTTP POST /api/payment/record responded 500 in 56.0609 ms
+[2025-06-12 15:33:58 INF] Starting up the application
+[2025-06-12 15:33:58 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 15:34:05 INF] HTTP POST /api/payment/record responded 200 in 876.2816 ms
+[2025-06-12 15:34:17 INF] HTTP GET /api/payment/mentee/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 173.9809 ms
+[2025-06-12 15:35:07 INF] HTTP GET /api/payment/mentee/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 13.6367 ms
+[2025-06-12 15:35:13 INF] HTTP GET /api/payment/b93832dd-0f38-487b-9668-51ae230c9cbe responded 200 in 24.0662 ms
+[2025-06-12 15:35:27 INF] HTTP GET /api/payment/all responded 200 in 9.2452 ms
+[2025-06-12 16:17:48 INF] Starting up the application
+[2025-06-12 16:17:48 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 16:17:51 INF] HTTP GET /api/payment/all responded 200 in 1409.2666 ms
+[2025-06-12 16:18:00 INF] HTTP GET /api/payment/update-status/b93832dd-0f38-487b-9668-51ae230c9cbe responded 405 in 2.0818 ms
+[2025-06-12 16:18:09 INF] HTTP POST /api/payment/update-status/b93832dd-0f38-487b-9668-51ae230c9cbe responded 405 in 3.2233 ms
+[2025-06-12 16:18:12 INF] HTTP PUT /api/payment/update-status/b93832dd-0f38-487b-9668-51ae230c9cbe responded 404 in 129.6871 ms
+[2025-06-12 16:18:19 INF] HTTP GET /api/payment/all responded 200 in 6.3092 ms
+[2025-06-12 16:19:00 INF] Starting up the application
+[2025-06-12 16:19:00 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 16:20:22 INF] HTTP PUT /api/payment/update-status/b93832dd-0f38-487b-9668-51ae230c9cbe responded 404 in 75612.8443 ms
+[2025-06-12 16:21:03 INF] Starting up the application
+[2025-06-12 16:21:03 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 16:21:07 INF] HTTP PUT /api/payment/update-status/b93832dd-0f38-487b-9668-51ae230c9cbe responded 400 in 756.3959 ms
+[2025-06-12 16:21:40 INF] HTTP PUT /api/payment/update-status/b93832dd-0f38-487b-9668-51ae230c9cbe responded 200 in 425.5123 ms
+[2025-06-12 16:21:46 INF] HTTP GET /api/payment/all responded 200 in 65.1206 ms
+[2025-06-12 16:21:58 INF] HTTP PUT /api/payment/update-status/b93832dd-0f38-487b-9668-51ae230c9cbe responded 200 in 6.1981 ms
+[2025-06-12 16:22:01 INF] HTTP GET /api/payment/all responded 200 in 5.7548 ms
+[2025-06-12 16:24:26 INF] Starting up the application
+[2025-06-12 16:24:27 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-12 16:24:33 INF] HTTP GET /api/payment/all responded 200 in 935.2423 ms
+[2025-06-12 16:24:37 INF] HTTP PUT /api/payment/update-status/b93832dd-0f38-487b-9668-51ae230c9cbe responded 404 in 132.0832 ms
+[2025-06-12 16:24:44 INF] HTTP PUT /api/payment/update-status/b93832dd-0f38-487b-9668-51ae230c9cbe responded 200 in 149.8501 ms
+[2025-06-12 16:24:48 INF] HTTP GET /api/payment/all responded 200 in 4.4914 ms
+[2025-06-12 16:25:25 INF] HTTP GET /api/payment/b93832dd-0f38-487b-9668-51ae230c9cbe responded 200 in 10.2460 ms
+[2025-06-12 16:25:28 INF] HTTP GET /api/payment/all responded 200 in 1.4245 ms
