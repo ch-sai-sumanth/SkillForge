@@ -1,5 +1,7 @@
 using Application.DTOs;
+using Application.Exceptions;
 using Application.Interfaces;
+using Domain;
 using User.Domain.Entities;
 using User.Domain.Repositories;
 
@@ -10,11 +12,13 @@ public class SessionService : ISessionService
 {
     private readonly ISessionRepository _sessionRepository;
     private readonly IUserRepository _userRepository;
+    private readonly ISessionHistoryRepository _sessionHistoryRepository;
 
-    public SessionService(ISessionRepository repository,IUserRepository userRepository)
+    public SessionService(ISessionRepository repository,IUserRepository userRepository,ISessionHistoryRepository sessionHistoryRepository)
     {
         _sessionRepository = repository;
         _userRepository = userRepository;
+        _sessionHistoryRepository = sessionHistoryRepository;
     }
 
     public async Task<List<Session>> GetUserSessionsAsync(string userId)
@@ -50,7 +54,7 @@ public class SessionService : ISessionService
             StartTime = dto.StartTime,
             EndTime = dto.EndTime,
             Topic = dto.Topic,
-            Status = "Pending"
+            Status = SessionStatus.Pending
         };
 
         await _sessionRepository.CreateAsync(session);
@@ -83,10 +87,10 @@ public class SessionService : ISessionService
         if (session == null)
             throw new InvalidOperationException("Session not found.");
 
-        if (session.Status == "Cancelled")
+        if (session.Status == SessionStatus.Cancelled)
             throw new InvalidOperationException("Session is already cancelled.");
 
-        session.Status = "Cancelled";
+        session.Status = SessionStatus.Cancelled;
         await _sessionRepository.UpdateAsync(session);
 
         // Restore availability
@@ -145,18 +149,38 @@ public class SessionService : ISessionService
 
         return merged;
     }
-    
+
     public async Task UpdateSessionAsync(string sessionId, UpdateSessionDto dto)
     {
         var session = await _sessionRepository.GetByIdAsync(sessionId);
         if (session == null)
-            throw new InvalidOperationException("Session not found.");
-        
-        session.StartTime = dto.StartTime;
-        session.EndTime = dto.EndTime;
+            throw new NotFoundException($"Session with ID '{sessionId}' not found.");
+
+        var isTimeChanged = session.StartTime != dto.StartTime || session.EndTime != dto.EndTime;
+        var oldStatus = session.Status;
+
         session.Topic = dto.Topic;
         session.MeetingLink = dto.MeetingLink;
         session.Notes = dto.Notes;
+        session.StartTime = dto.StartTime;
+        session.EndTime = dto.EndTime;
+
+        if (isTimeChanged && session.Status != SessionStatus.Cancelled)
+        {
+            session.Status = SessionStatus.Rescheduled;
+
+            var history = new SessionHistory
+            {
+                SessionId = session.Id,
+                OldStatus = oldStatus,
+                NewStatus = SessionStatus.Rescheduled,
+                ChangedAt = DateTime.UtcNow,
+                ChangedBy = dto.UpdatedBy ?? "System", // You can add this to UpdateSessionDto
+                ChangeReason = "Rescheduled by user"
+            };
+
+            await _sessionHistoryRepository.AddAsync(history);
+        }
 
         await _sessionRepository.UpdateAsync(session);
     }
@@ -167,10 +191,10 @@ public class SessionService : ISessionService
         if (session == null)
             throw new InvalidOperationException("Session not found.");
 
-        if (session.Status != "Pending")
+        if (session.Status != SessionStatus.Pending)
             throw new InvalidOperationException("Only pending sessions can be accepted.");
 
-        session.Status = "Scheduled";
+        session.Status = SessionStatus.Accepted;
         await _sessionRepository.UpdateAsync(session);
     }
 
@@ -180,10 +204,10 @@ public class SessionService : ISessionService
         if (session == null)
             throw new InvalidOperationException("Session not found.");
 
-        if (session.Status != "Pending")
+        if (session.Status != SessionStatus.Pending)
             throw new InvalidOperationException("Only pending sessions can be declined.");
 
-        session.Status = "Declined";
+        session.Status = SessionStatus.Declined;
         await _sessionRepository.UpdateAsync(session);
     }
 
@@ -194,5 +218,26 @@ public class SessionService : ISessionService
             throw new UnauthorizedAccessException("Only mentors can view pending sessions.");
 
         return await _sessionRepository.GetSessionsByMentorAndStatusAsync(mentorId, "Pending");
+    }
+    public async Task CompleteSessionAsync(string sessionId)
+    {
+        var session = await _sessionRepository.GetByIdAsync(sessionId);
+        if (session == null)
+            throw new NotFoundException($"Session with ID '{sessionId}' not found.");
+
+        if (session.Status != SessionStatus.Accepted)
+            throw new InvalidOperationException($"Only accepted sessions can be marked as completed. Current status: {session.Status}");
+
+        if (session.EndTime > DateTime.UtcNow)
+            throw new InvalidOperationException("Cannot mark session as completed before it has ended.");
+
+        session.Status = SessionStatus.Completed;
+
+        await _sessionRepository.UpdateAsync(session);
+    }
+
+    public async Task<List<SessionHistory>?> GetSessionHistoryAsync(string sessionId)
+    {
+        return await _sessionHistoryRepository.GetBySessionIdAsync(sessionId);
     }
 }

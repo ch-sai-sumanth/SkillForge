@@ -1,4 +1,5 @@
 using Application.Interfaces;
+using Domain;
 using MongoDB.Driver;
 using User.Domain.Entities;
 using UserEntity=User.Domain.Entities.User;
@@ -38,7 +39,7 @@ public class SessionRepository : ISessionRepository
     public Task<List<Session>> GetSessionsByMentorAndStatusAsync(string mentorId, string pending)
     {
        List<Session> sessions= _sessionsCollection.AsQueryable()
-            .Where(s => s.MentorId == mentorId && s.Status == pending)
+            .Where(s => s.MentorId == mentorId && s.Status == SessionStatus.Pending)
             .ToList();
          return Task.FromResult(sessions);
     }

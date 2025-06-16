@@ -14,4 +14,6 @@ public interface ISessionService
     Task AcceptSessionAsync(string sessionId);
     Task DeclineSessionAsync(string sessionId);
     Task<List<Session>> GetPendingSessionsForMentorAsync(string mentorId);
+    Task CompleteSessionAsync(string sessionId);
+    Task<List<SessionHistory>?> GetSessionHistoryAsync(string sessionId);
 }

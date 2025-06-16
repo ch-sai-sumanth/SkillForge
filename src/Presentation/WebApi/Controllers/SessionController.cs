@@ -77,4 +77,18 @@ public class SessionController : ControllerBase
         return Ok(sessions);
     }
     
+    [HttpPost("{sessionId}/complete")]
+    public async Task<IActionResult> CompleteSession(string sessionId)
+    {
+        await _sessionService.CompleteSessionAsync(sessionId);
+        return Ok("Session marked as completed.");
+    }
+    [HttpGet("{sessionId}/history")]
+    public async Task<IActionResult> GetSessionHistory(string sessionId)
+    {
+        var history = await _sessionService.GetSessionHistoryAsync(sessionId);
+        return Ok(history);
+    }
+
+    
 }

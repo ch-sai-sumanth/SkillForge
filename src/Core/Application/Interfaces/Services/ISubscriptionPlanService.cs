@@ -5,8 +5,7 @@ namespace Application.Interfaces;
 
 public interface ISubscriptionPlanService
 {
-    Task CreatePlanAsync(CreateSubscriptionPlanDto dto);
-    Task CreateSubscriptionPlanAsync(SubscriptionPlanDto dto);
+    Task<string> CreatePlanAsync(CreateSubscriptionPlanDto dto);
     Task<List<SubscriptionPlanDto>> GetAllPlansAsync();
     Task<SubscriptionPlanDto?> GetPlanByIdAsync(string id);
     Task<bool> DeletePlanAsync(string id);

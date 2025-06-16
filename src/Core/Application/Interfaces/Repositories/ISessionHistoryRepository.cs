@@ -4,6 +4,7 @@ namespace Application.Interfaces;
 
 public interface ISessionHistoryRepository
 {
-    Task AddAsync(SessionHistory sessionHistory);
+    Task AddAsync(SessionHistory history);
+    Task<List<SessionHistory>> GetBySessionIdAsync(string sessionId);
 
 }

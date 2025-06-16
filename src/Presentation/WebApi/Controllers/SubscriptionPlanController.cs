@@ -19,8 +19,9 @@ public class SubscriptionPlanController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> CreatePlan([FromBody] CreateSubscriptionPlanDto dto)
     {
-        await _subscriptionPlanService.CreatePlanAsync(dto);
-        return Ok(new { message = "Subscription plan created successfully." });
+        var id = await _subscriptionPlanService.CreatePlanAsync(dto);
+        return Ok(new { message = "Plan created", planId = id });
+
     }
 
     // GET: api/subscriptionplan/all

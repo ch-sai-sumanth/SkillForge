@@ -1,6 +1,11 @@
 namespace Domain;
 
-public class SessionStatus
+public enum SessionStatus
 {
-    
+    Pending,
+    Accepted,
+    Declined,
+    Cancelled,
+    Completed,
+    Rescheduled
 }

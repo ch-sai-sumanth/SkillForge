@@ -20,23 +20,16 @@ public class SubscriptionPlanService : ISubscriptionPlanService
         _mapper = mapper;
     }
 
-    public async Task CreatePlanAsync(CreateSubscriptionPlanDto dto)
+    public async Task<string> CreatePlanAsync(CreateSubscriptionPlanDto dto)
     {
         var plan = _mapper.Map<SubscriptionPlan>(dto);
         plan.Id = Guid.NewGuid().ToString();
         plan.CreatedAt = DateTime.UtcNow;
 
         await _subscriptionPlanRepository.CreateAsync(plan);
+        return plan.Id;
     }
-
-    public async Task CreateSubscriptionPlanAsync(SubscriptionPlanDto dto)
-    {
-        var plan = _mapper.Map<SubscriptionPlan>(dto);
-        plan.Id = Guid.NewGuid().ToString();
-        plan.CreatedAt = DateTime.UtcNow;
-
-        await _subscriptionPlanRepository.CreateAsync(plan);
-    }
+    
 
     public async Task<List<SubscriptionPlanDto>> GetAllPlansAsync()
     {

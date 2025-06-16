@@ -75,6 +75,7 @@ builder.Services.AddScoped<IUserSubscriptionRepository, UserSubscriptionReposito
 builder.Services.AddScoped<IUserSubscriptionService, UserSubscriptionService>();
 builder.Services.AddScoped<IMentorRateRepository, MentorRateRepository>();
 builder.Services.AddScoped<IMentorRateService, MentorRateService>();
+builder.Services.AddScoped<ISessionHistoryRepository, SessionHistoryRepository>();
 
 
 
@@ -84,6 +85,16 @@ builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<UserDtoValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<ChangePasswordDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<BookSessionDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<LoginRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateSessionDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateSubscriptionPlanDtoValidator>();
+
+
+
+
+
 
 builder.Services.AddSingleton<IMongoClient>(sp =>
 {
