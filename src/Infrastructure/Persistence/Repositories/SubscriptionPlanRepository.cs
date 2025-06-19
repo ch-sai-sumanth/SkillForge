@@ -1,3 +1,4 @@
+using Application.DTOs;
 using Application.Interfaces.Repositories;
 using MongoDB.Driver;
 using User.Domain.Entities;
@@ -24,6 +25,7 @@ public class SubscriptionPlanRepository : ISubscriptionPlanRepository
     // READ (By ID)
     public async Task<SubscriptionPlan?> GetByIdAsync(string id) =>
         await _subscriptionPlanCollection.Find(p => p.Id == id).FirstOrDefaultAsync();
+    
 
     // READ (All Plans - optional if you want to rename GetAllAsync)
     public async Task<List<SubscriptionPlan>> GetAllPlansAsync() =>

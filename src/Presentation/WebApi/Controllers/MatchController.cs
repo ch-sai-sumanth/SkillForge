@@ -1,4 +1,7 @@
 using Application.Interfaces;
+using System.Threading.Tasks;
+using Application.Queries.GetMentorSkills;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -7,11 +10,11 @@ namespace API.Controllers;
 [Route("api/[controller]")]
 public class MatchingController : ControllerBase
 {
-    private readonly IUserService _userService;
+    private readonly IMediator _mediator;
 
-    public MatchingController(IUserService userService)
+    public MatchingController(IMediator mediator)
     {
-        _userService = userService;
+        _mediator = mediator;
     }
 
     [HttpPost("mentors-by-skills")]
@@ -20,7 +23,7 @@ public class MatchingController : ControllerBase
         if (skills == null || skills.Count == 0)
             return BadRequest("Skills list cannot be empty.");
 
-        var matches = await _userService.GetMentorsBySkillsWithScoreAsync(skills);
-        return Ok(matches);
+        var result = await _mediator.Send(new GetMentorsBySkillsQuery { Skills = skills });
+        return Ok(result);
     }
 }

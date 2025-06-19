@@ -6,9 +6,9 @@ namespace Application.Interfaces;
 public interface IUserSubscriptionService
 {
     Task SubscribeUserAsync(SubscribeUserDto dto);
-    Task<UserSubscriptionDto?> GetSubscriptionDtoByUserIdAsync(string userId);
-    Task<UserSubscription?> GetSubscriptionByUserAsync(string userId);
+    Task<SubscriptionDto?> GetSubscriptionDtoByUserIdAsync(string userId);
+    Task<SubscriptionDto?> GetSubscriptionByUserAsync(string userId);
     Task<bool> IsUserSubscribedAsync(string userId);
-    Task<List<UserSubscriptionDto>> GetAllSubscriptionsAsync();
+    Task<List<SubscriptionDto>> GetAllSubscriptionsAsync();
     Task<bool> CancelSubscriptionAsync(string userId);
 }

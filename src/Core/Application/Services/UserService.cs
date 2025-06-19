@@ -1,5 +1,6 @@
 using Application.DTOs;
 using Application.Interfaces;
+using Application.Queries.GetMentorSkills;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -125,10 +126,19 @@ public class UserService : IUserService
     
     public async Task<List<MentorMatchDto>> GetMentorsBySkillsWithScoreAsync(List<string> skills)
     {
-        var mentors = await _userRepository.GetMentorsBySkillsAsync(skills.Select(s => s.ToLower()).ToList());    
+        // Normalize input for case-insensitive matching
+        var normalizedSkills = skills.Select(s => s.ToLower()).ToList();
+
+        // Get mentors who have at least one of these skills
+        var mentors = await _userRepository.GetMentorsBySkillsAsync(normalizedSkills);
+
         var mentorMatches = mentors.Select(mentor =>
             {
-                var matchedSkillsCount = mentor.Skills.Intersect(skills, StringComparer.OrdinalIgnoreCase).Count();
+                // Count how many skills match (case-insensitive)
+                var matchedSkillsCount = mentor.Skills
+                    .Intersect(skills, StringComparer.OrdinalIgnoreCase)
+                    .Count();
+
                 return new MentorMatchDto
                 {
                     Mentor = _mapper.Map<UserDto>(mentor),
@@ -157,7 +167,7 @@ public class UserService : IUserService
     }
     
 
-    public async Task<List<UserDto>> SearchMentorsBySkillAndAvailabilityAsync(string skill, DateTime desiredDateTime)
+    public async Task<List<MentorMatchDto>> SearchMentorsBySkillAndAvailabilityAsync(string skill, DateTime desiredDateTime)
     {
         var mentors = await _userRepository.GetMentorsBySkillAsync(skill);
 
@@ -166,7 +176,7 @@ public class UserService : IUserService
                 desiredDateTime >= a.StartTime && desiredDateTime <= a.EndTime))
             .ToList();
 
-        return availableMentors.Select(m => _mapper.Map<UserDto>(m)).ToList();
+        return availableMentors.Select(m => _mapper.Map<MentorMatchDto>(m)).ToList();
     }
     
 

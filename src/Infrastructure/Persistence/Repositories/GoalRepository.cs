@@ -1,3 +1,4 @@
+using Application.DTOs;
 using Domain.Repositories;
 using MongoDB.Driver;
 using User.Domain.Entities;

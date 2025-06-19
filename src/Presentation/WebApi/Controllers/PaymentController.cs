@@ -1,63 +1,64 @@
+using Application.Commands.RecordPayment;
+using Application.Commands.UpdatePaymentStatus;
 using Application.DTOs;
 using Application.Interfaces;
+using Application.Queries.GetPayments;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Threading.Tasks;
 namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class PaymentController : ControllerBase
 {
-    private readonly IPaymentService _paymentService;
+    private readonly IMediator _mediator;
 
-    public PaymentController(IPaymentService paymentService)
+    public PaymentController(IMediator mediator)
     {
-        _paymentService = paymentService;
+        _mediator = mediator;
     }
 
-    // POST: api/payment/record
     [HttpPost("record")]
     public async Task<IActionResult> RecordPayment([FromBody] RecordPaymentDto dto)
     {
-        await _paymentService.RecordPaymentAsync(dto);
-        return Ok(new { message = "Payment recorded successfully." });
+        var command = new RecordPaymentCommand { Payment = dto };
+        var result = await _mediator.Send(command);
+        return result ? Ok(new { message = "Payment recorded successfully." }) : BadRequest();
     }
 
-    // GET: api/payment/mentee/{menteeId}
     [HttpGet("mentee/{menteeId}")]
     public async Task<IActionResult> GetPaymentsByMentee(string menteeId)
     {
-        var payments = await _paymentService.GetPaymentsByMenteeAsync(menteeId);
-        return Ok(payments);
+        var result = await _mediator.Send(new GetPaymentsByMenteeQuery { MenteeId = menteeId });
+        return Ok(result);
     }
 
-    // GET: api/payment/{id}
     [HttpGet("{id}")]
     public async Task<IActionResult> GetPaymentById(string id)
     {
-        var payment = await _paymentService.GetPaymentByIdAsync(id);
-        if (payment == null)
-            return NotFound(new { message = "Payment not found." });
-
-        return Ok(payment);
+        var result = await _mediator.Send(new GetPaymentByIdQuery { PaymentId = id });
+        return result is not null ? Ok(result) : NotFound(new { message = "Payment not found." });
     }
 
-    // GET: api/payment/all
     [HttpGet("all")]
     public async Task<IActionResult> GetAllPayments()
     {
-        var payments = await _paymentService.GetAllPaymentsAsync();
-        return Ok(payments);
+        var result = await _mediator.Send(new GetAllPaymentsQuery());
+        return Ok(result);
     }
 
-    // PUT: api/payment/update-status/{id}
     [HttpPut("update-status/{id}")]
-    public async Task<IActionResult> UpdatePaymentStatus(string id, [FromQuery] UpdatePaymentStatusDto updatePaymentStatusDto)
+    public async Task<IActionResult> UpdatePaymentStatus(string id, [FromQuery] UpdatePaymentStatusDto updateDto)
     {
-        var updated = await _paymentService.UpdatePaymentStatusAsync(id, updatePaymentStatusDto);
-        if (!updated)
-            return NotFound(new { message = "Payment not found or status update failed." });
+        var result = await _mediator.Send(new UpdatePaymentStatusCommand
+        {
+            PaymentId = id,
+            UpdateDto = updateDto
+        });
 
-        return Ok(new { message = "Payment status updated successfully." });
+        return result
+            ? Ok(new { message = "Payment status updated successfully." })
+            : NotFound(new { message = "Payment not found or status update failed." });
     }
 }

@@ -2,8 +2,14 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
+using Application.Commands.LogoutUser;
+using Application.Commons;
+using Application.Commons.LoginUser;
 using Application.DTOs;
 using Application.Interfaces;
+using Application.Queries.RefreshToken;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -15,67 +21,69 @@ namespace API.Controllers;
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly IUserService _userService; // Your service to validate users
-    private readonly IAuthService _authService; // Your service to handle authentication logic
-    private readonly IConfiguration _configuration;
+    private readonly IMediator _mediator;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public AuthController(IUserService userService,IAuthService authService, IConfiguration configuration)
+
+    public AuthController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
     {
-        _userService = userService;
-        _configuration = configuration;
-        _authService = authService;
+        _mediator = mediator;
+        _httpContextAccessor = httpContextAccessor;
     }
     
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequestDto registerDto)
     {
         // Check if username/email already exists
-        var userByUsername = await _userService.GetByUsernameAsync(registerDto.Username);
-        if (userByUsername != null)
-            return BadRequest("Username is already taken.");
-
-        var userByEmail = await _userService.GetByEmailAsync(registerDto.Email);
-        if (userByEmail != null)
-            return BadRequest("An account with this email already exists.");
-
+       var result = await _mediator.Send(new RegisterUserCommand
+       {
+           name=registerDto.Name,
+           Username = registerDto.Username,
+           Email = registerDto.Email,
+           Password = registerDto.Password,
+           Role = registerDto.Role,
+           Skills = registerDto.Skills,
+       });
        
-
-        await _authService.CreateUserAsync(registerDto);
-
-        return Ok("User registered successfully");
+       return result.Contains("successfully")? Ok(result) : BadRequest(result);
     }
 
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequestDto loginDto)
     {
-        var authResponse = await _authService.LoginAsync(loginDto.Username, loginDto.Password);
-        if (authResponse == null)
-            return Unauthorized("Invalid username/email or password");
-
-        return Ok(authResponse); // returns { token, refreshToken }
+        var response = await _mediator.Send(new LoginUserQuery()
+        {
+            Username = loginDto.Username,
+            Password = loginDto.Password
+        });
+        return response == null 
+            ? Unauthorized("Invalid username or password") 
+            : Ok(response);
     }
     
     [Authorize]
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()
     {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (string.IsNullOrEmpty(userId))
-            return Unauthorized();
-
-        await _authService.LogoutAsync(userId);
-        return Ok("Logged out successfully");
+       var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+         if (string.IsNullOrEmpty(userId))
+              return Unauthorized("User ID not found in token");
+         
+         await _mediator.Send(new LogoutUserCommand{ UserId = userId });
+            return Ok("User logged out successfully");
     }
 
 
     [HttpPost("refresh-token")]
     public async Task<IActionResult> RefreshToken([FromBody] string refreshToken)
     {
-        var newTokens = await _authService.RefreshTokenAsync(refreshToken);
-        if (newTokens == null)
-            return Unauthorized("Invalid or expired refresh token");
-
-        return Ok(newTokens);
+        var result = await _mediator.Send(new RefreshTokenQuery
+        {
+            RefreshToken = refreshToken
+        });
+        return result==null?
+            Unauthorized("Invalid or expired refresh token") :
+            Ok(result);
     }
 }

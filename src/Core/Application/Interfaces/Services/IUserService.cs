@@ -16,10 +16,10 @@ public interface IUserService
     
     Task<bool> ChangePasswordAsync(string userId, ChangePasswordDto dto);
 
-    Task<List<MentorMatchDto>?> GetMentorsBySkillsWithScoreAsync(List<string> skills);
+    Task<List<MentorMatchDto>> GetMentorsBySkillsWithScoreAsync(List<string> skills);
     
     Task SetMentorAvailabilityAsync(string mentorId, List<AvailabilityDto> availabilityDtos);
-    Task<List<UserDto>> SearchMentorsBySkillAndAvailabilityAsync(string skill, DateTime desiredDateTime);
+    Task<List<MentorMatchDto>> SearchMentorsBySkillAndAvailabilityAsync(string skill, DateTime desiredDateTime);
     
     Task<bool> UpdateMentorSkillsAsync(string userId, List<string> skills);
 

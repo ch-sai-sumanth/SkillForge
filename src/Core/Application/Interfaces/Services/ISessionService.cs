@@ -5,15 +5,15 @@ namespace Application.Interfaces;
 
 public interface ISessionService
 {
-    Task<List<Session>> GetUserSessionsAsync(string userId);
-    Task<Session> BookSessionAsync(BookSessionDto dto);
-    Task CancelSessionAsync(string sessionId);
+    Task<List<SessionDto>> GetUserSessionsAsync(string userId);
+    Task<SessionDto> BookSessionAsync(BookSessionDto dto);
+    Task<bool> CancelSessionAsync(string sessionId);
 
-    Task<Session?> GetSessionByIdAsync(string sessionId);
+    Task<SessionDto?> GetSessionByIdAsync(string sessionId);
     Task UpdateSessionAsync(string id,UpdateSessionDto updateSessionDto);
     Task AcceptSessionAsync(string sessionId);
     Task DeclineSessionAsync(string sessionId);
-    Task<List<Session>> GetPendingSessionsForMentorAsync(string mentorId);
-    Task CompleteSessionAsync(string sessionId);
-    Task<List<SessionHistory>?> GetSessionHistoryAsync(string sessionId);
+    Task<List<SessionDto>> GetPendingSessionsForMentorAsync(string mentorId);
+    Task<bool> CompleteSessionAsync(string sessionId);
+    Task<List<SessionHistoryDto>> GetSessionHistoryAsync(string sessionId);
 }

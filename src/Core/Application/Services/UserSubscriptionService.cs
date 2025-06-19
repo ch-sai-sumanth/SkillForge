@@ -22,44 +22,43 @@ public class UserSubscriptionService : IUserSubscriptionService
         var subscription = _mapper.Map<UserSubscription>(dto);
 
         subscription.Id = Guid.NewGuid().ToString();
-        subscription.SubscribedAt = DateTime.UtcNow;
-        subscription.ExpiresAt = DateTime.UtcNow.AddDays(dto.DurationInDays);
+        subscription.StartDate = DateTime.UtcNow;
+        subscription.EndDate = subscription.StartDate.AddDays(dto.DurationInDays);
+        subscription.IsConfirmed = false; // Mentor needs to confirm
 
         await _subscriptionRepository.CreateAsync(subscription);
     }
 
-    public async Task<UserSubscriptionDto?> GetSubscriptionDtoByUserIdAsync(string userId)
+    public async Task<SubscriptionDto?> GetSubscriptionDtoByUserIdAsync(string userId)
     {
-        var subscription = await _subscriptionRepository.GetByUserIdAsync(userId);
-        return subscription == null ? null : _mapper.Map<UserSubscriptionDto>(subscription);
+        return await _subscriptionRepository.GetByUserIdAsync(userId);
     }
 
-    public async Task<UserSubscription?> GetSubscriptionByUserAsync(string userId)
+    public async Task<SubscriptionDto?> GetSubscriptionByUserAsync(string userId)
     {
         return await _subscriptionRepository.GetByUserIdAsync(userId);
     }
 
     public async Task<bool> IsUserSubscribedAsync(string userId)
     {
-        var subscription = await _subscriptionRepository.GetByUserIdAsync(userId);
-        return subscription != null && DateTime.UtcNow <= subscription.ExpiresAt;
+        var subscription = await _subscriptionRepository.GetActiveSubscriptionByUserIdAsync(userId);
+        return subscription != null;
     }
 
-    public async Task<List<UserSubscriptionDto>> GetAllSubscriptionsAsync()
+    public async Task<List<SubscriptionDto>> GetAllSubscriptionsAsync()
     {
-        var subscriptions = await _subscriptionRepository.GetAllAsync();
-        return _mapper.Map<List<UserSubscriptionDto>>(subscriptions);
+        return await _subscriptionRepository.GetAllAsync();
     }
 
     public async Task<bool> CancelSubscriptionAsync(string userId)
     {
-        var subscription = await _subscriptionRepository.GetByUserIdAsync(userId);
-        if (subscription == null || DateTime.UtcNow > subscription.ExpiresAt)
+        var subscriptionDto = await _subscriptionRepository.GetByUserIdAsync(userId);
+        if (subscriptionDto == null || subscriptionDto.EndDate < DateTime.UtcNow)
             return false;
 
-        subscription.ExpiresAt = DateTime.UtcNow; // Cancel immediately
-        subscription.IsActive = false;
-        var success = await _subscriptionRepository.UpdateAsync(subscription.Id, subscription);
-        return success;
+        var updatedEntity = _mapper.Map<UserSubscription>(subscriptionDto);
+        updatedEntity.EndDate = DateTime.UtcNow;
+
+        return await _subscriptionRepository.UpdateAsync(updatedEntity.Id, updatedEntity);
     }
 }

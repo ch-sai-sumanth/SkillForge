@@ -1,17 +1,22 @@
-using Application.Interfaces.Repositories;
 using MongoDB.Driver;
-using User.Domain.Entities;
 
 namespace Infrastructure.Repositories;
 
+using Application.DTOs;
+using Application.Interfaces.Repositories;
+using AutoMapper;
+using MongoDB.Driver;
+using User.Domain.Entities;
+
 public class UserSubscriptionRepository : IUserSubscriptionRepository
-    
 {
     private readonly IMongoCollection<UserSubscription> _collection;
+    private readonly IMapper _mapper;
 
-    public UserSubscriptionRepository(IMongoDatabase database)
+    public UserSubscriptionRepository(IMongoDatabase database, IMapper mapper)
     {
         _collection = database.GetCollection<UserSubscription>("UserSubscriptions");
+        _mapper = mapper;
     }
 
     // CREATE
@@ -19,27 +24,36 @@ public class UserSubscriptionRepository : IUserSubscriptionRepository
         await _collection.InsertOneAsync(subscription);
 
     // READ (Single Active)
-    public async Task<UserSubscription?> GetActiveSubscriptionByUserIdAsync(string userId) =>
-        await _collection.Find(s => s.UserId == userId && s.ExpiresAt >= DateTime.UtcNow)
+    public async Task<SubscriptionDto?> GetActiveSubscriptionByUserIdAsync(string userId)
+    {
+        var sub = await _collection
+            .Find(s => s.MenteeId == userId && s.EndDate >= DateTime.UtcNow)
             .FirstOrDefaultAsync();
 
-    // READ (All by User)
-    public async Task<List<UserSubscription>> GetAllByUserIdAsync(string userId) =>
-        await _collection.Find(s => s.UserId == userId).ToListAsync();
+        return sub is null ? null : _mapper.Map<SubscriptionDto>(sub);
+    }
 
-    // READ (Latest by User - for showing most recent subscription)
-    public async Task<UserSubscription?> GetByUserIdAsync(string userId) =>
-        await _collection.Find(s => s.UserId == userId)
-            .SortByDescending(s => s.SubscribedAt)
+    // READ (All by Mentee)
+    public async Task<List<SubscriptionDto>> GetAllByUserIdAsync(string userId)
+    {
+        var subs = await _collection.Find(s => s.MenteeId == userId).ToListAsync();
+        return _mapper.Map<List<SubscriptionDto>>(subs);
+    }
+
+    // READ (Latest by Mentee)
+    public async Task<SubscriptionDto?> GetByUserIdAsync(string userId)
+    {
+        var sub = await _collection.Find(s => s.MenteeId == userId)
+            .SortByDescending(s => s.StartDate)
             .FirstOrDefaultAsync();
+
+        return sub is null ? null : _mapper.Map<SubscriptionDto>(sub);
+    }
 
     // UPDATE
-    public async Task<bool> UpdateAsync(string id, UserSubscription updatedSubscription)
+    public async Task<bool> UpdateAsync(string id, UserSubscription updatedEntity)
     {
-        var result = await _collection.ReplaceOneAsync(
-            s => s.Id == id,
-            updatedSubscription);
-
+        var result = await _collection.ReplaceOneAsync(s => s.Id == id, updatedEntity);
         return result.IsAcknowledged && result.ModifiedCount > 0;
     }
 
@@ -50,8 +64,10 @@ public class UserSubscriptionRepository : IUserSubscriptionRepository
         return result.IsAcknowledged && result.DeletedCount > 0;
     }
 
-    public Task<List<UserSubscription>> GetAllAsync()
+    // READ (All)
+    public async Task<List<SubscriptionDto>> GetAllAsync()
     {
-        return _collection.Find(_ => true).ToListAsync();
+        var subs = await _collection.Find(_ => true).ToListAsync();
+        return _mapper.Map<List<SubscriptionDto>>(subs);
     }
 }

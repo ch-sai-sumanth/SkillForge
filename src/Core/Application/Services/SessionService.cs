@@ -1,6 +1,7 @@
 using Application.DTOs;
 using Application.Exceptions;
 using Application.Interfaces;
+using AutoMapper;
 using Domain;
 using User.Domain.Entities;
 using User.Domain.Repositories;
@@ -13,20 +14,23 @@ public class SessionService : ISessionService
     private readonly ISessionRepository _sessionRepository;
     private readonly IUserRepository _userRepository;
     private readonly ISessionHistoryRepository _sessionHistoryRepository;
+    private readonly IMapper _mapper;
 
-    public SessionService(ISessionRepository repository,IUserRepository userRepository,ISessionHistoryRepository sessionHistoryRepository)
+    public SessionService(ISessionRepository repository,IUserRepository userRepository,ISessionHistoryRepository sessionHistoryRepository,IMapper mapper)
     {
         _sessionRepository = repository;
         _userRepository = userRepository;
         _sessionHistoryRepository = sessionHistoryRepository;
+        _mapper = mapper;
     }
 
-    public async Task<List<Session>> GetUserSessionsAsync(string userId)
+    public async Task<List<SessionDto>> GetUserSessionsAsync(string userId)
     {
-        return await _sessionRepository.GetSessionsByUserIdAsync(userId);
+        List<Session> sessions = await _sessionRepository.GetSessionsByUserIdAsync(userId);
+        return _mapper.Map<List<SessionDto>>(sessions);
     }
 
-    public async Task<Session> BookSessionAsync(BookSessionDto dto)
+    public async Task<SessionDto> BookSessionAsync(BookSessionDto dto)
     {
         var mentor = await _userRepository.GetByIdAsync(dto.MentorId);
         if (mentor == null)
@@ -58,7 +62,7 @@ public class SessionService : ISessionService
         };
 
         await _sessionRepository.CreateAsync(session);
-        return session;
+        return _mapper.Map<SessionDto>(session);
     }
     
 
@@ -77,11 +81,11 @@ public class SessionService : ISessionService
         var sessions = await _sessionRepository.GetSessionsByUserIdAsync(mentorId);
 
         return sessions
-            .Where(s => s.Id != excludeSessionId)
+            .Where(s => s.Id != excludeSessionId && s.Status != SessionStatus.Cancelled)
             .All(s => s.EndTime <= start || s.StartTime >= end);
     }
 
-    public async Task CancelSessionAsync(string sessionId)
+    public async Task<bool> CancelSessionAsync(string sessionId)
     {
         var session = await _sessionRepository.GetByIdAsync(sessionId);
         if (session == null)
@@ -109,14 +113,15 @@ public class SessionService : ISessionService
         var mergedAvailability = MergeAvailabilitySlots(availabilityList);
 
         await _sessionRepository.UpdateMentorAvailabilityAsync(session.MentorId, mergedAvailability);
+        return true;
     }
 
-    public Task<Session?> GetSessionByIdAsync(string sessionId)
+    public async Task<SessionDto?> GetSessionByIdAsync(string sessionId)
     {
-        var session = _sessionRepository.GetByIdAsync(sessionId);
+        var session = await _sessionRepository.GetByIdAsync(sessionId);
         if (session == null)
             throw new InvalidOperationException("Session not found.");
-        return session;
+        return _mapper.Map<SessionDto>(session);
     }
     
     private List<MentorAvailability> MergeAvailabilitySlots(List<MentorAvailability> slots)
@@ -164,6 +169,15 @@ public class SessionService : ISessionService
         session.Notes = dto.Notes;
         session.StartTime = dto.StartTime;
         session.EndTime = dto.EndTime;
+        session.Status = dto.Status?.Trim().ToLowerInvariant() switch
+        {
+            "pending" => SessionStatus.Pending,
+            "accepted" => SessionStatus.Accepted,
+            "declined" => SessionStatus.Declined,
+            "completed" => SessionStatus.Completed,
+            "cancelled" => SessionStatus.Cancelled,
+            _ => throw new InvalidOperationException("Invalid session status.")
+        };
 
         if (isTimeChanged && session.Status != SessionStatus.Cancelled)
         {
@@ -211,15 +225,18 @@ public class SessionService : ISessionService
         await _sessionRepository.UpdateAsync(session);
     }
 
-    public async Task<List<Session>> GetPendingSessionsForMentorAsync(string mentorId)
+    public async Task<List<SessionDto>> GetPendingSessionsForMentorAsync(string mentorId)
     {
         var mentor = await _userRepository.GetByIdAsync(mentorId);
         if (mentor == null || mentor.Role != "Mentor")
             throw new UnauthorizedAccessException("Only mentors can view pending sessions.");
 
-        return await _sessionRepository.GetSessionsByMentorAndStatusAsync(mentorId, "Pending");
+        List<Session> sessions= await _sessionRepository.GetSessionsByMentorAndStatusAsync(mentorId, "Pending");
+        if (sessions == null || sessions.Count == 0)
+            throw new NotFoundException($"No pending sessions found for mentor with ID '{mentorId}'.");
+        return _mapper.Map<List<SessionDto>>(sessions);
     }
-    public async Task CompleteSessionAsync(string sessionId)
+    public async Task<bool> CompleteSessionAsync(string sessionId)
     {
         var session = await _sessionRepository.GetByIdAsync(sessionId);
         if (session == null)
@@ -234,10 +251,14 @@ public class SessionService : ISessionService
         session.Status = SessionStatus.Completed;
 
         await _sessionRepository.UpdateAsync(session);
+        return true;
     }
 
-    public async Task<List<SessionHistory>?> GetSessionHistoryAsync(string sessionId)
+    public async Task<List<SessionHistoryDto>> GetSessionHistoryAsync(string sessionId)
     {
-        return await _sessionHistoryRepository.GetBySessionIdAsync(sessionId);
+        List<SessionHistory> sessionHistories= await _sessionHistoryRepository.GetBySessionIdAsync(sessionId);
+        if (sessionHistories == null || sessionHistories.Count == 0)
+            throw new NotFoundException($"No history found for session with ID '{sessionId}'.");
+        return _mapper.Map<List<SessionHistoryDto>>(sessionHistories);
     }
 }

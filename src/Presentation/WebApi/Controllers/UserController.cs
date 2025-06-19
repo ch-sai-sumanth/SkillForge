@@ -1,88 +1,67 @@
+using Application.Commands.User;
 using Application.DTOs;
 using Application.Interfaces;
+using Application.Queries.User;
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserEntity = User.Domain.Entities.User;
-
+using System.Threading.Tasks;
 namespace API.Controllers;
 
-[Authorize]
+[Authorize(Roles = "Admin")]
 [ApiController]
 [Route("api/[controller]")]
 public class UserController : ControllerBase
 {
-    private readonly IUserService _userService;
-    private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
 
-    public UserController(IUserService userService,IMapper mapper)
+    public UserController(IMediator mediator)
     {
-        _userService = userService;
-        _mapper = mapper;
+        _mediator = mediator;
     }
 
-    // GET: api/user
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var users = await _userService.GetAllAsync();
-        return Ok(users);
+        var result = await _mediator.Send(new GetAllUsersQuery());
+        return Ok(result);
     }
 
-    // GET: api/user/{id}
-    [HttpGet]
-    [Route("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] string id)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(string id)
     {
-        var user = await _userService.GetByIdAsync(id);
-        return user is null ? NotFound() : Ok(user);
+        var result = await _mediator.Send(new GetUserByIdQuery(id));
+        return result == null ? NotFound() : Ok(result);
     }
 
-// POST: api/user
     [HttpPost]
-    public async Task<IActionResult> Create(UserDto userDto)
+    public async Task<IActionResult> Create([FromBody] UserDto dto)
     {
-        userDto.Id = string.Empty;
-    
-        await _userService.CreateAsync(userDto);
+        await _mediator.Send(new CreateUserCommand { UserDto = dto });
         return Created();
     }
 
-    // PUT: api/user/{id}
-    [HttpPut]
-    [Route("{id}")]
-    public async Task<IActionResult> Update([FromRoute] string id, UserDto userDto)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(string id, [FromBody] UserDto dto)
     {
-        if (id != userDto.Id)
-            return BadRequest("ID mismatch");
-
-        await _userService.UpdateAsync(userDto);
+        await _mediator.Send(new UpdateUserCommand { Id = id, UserDto = dto });
         return NoContent();
     }
 
-    // DELETE: api/user/{id}
-    [HttpDelete]
-    [Route("{id}")]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)
     {
-        await _userService.DeleteAsync(id);
+        await _mediator.Send(new DeleteUserCommand { Id = id });
         return NoContent();
     }
-    
-    
-    [HttpPatch]
-    [Route("{id}/update-role")]
-    [Authorize(Roles = "Admin")] // Only Admin can update roles
-    public async Task<IActionResult> UpdateRole([FromRoute] string id, [FromBody] string newRole)
-    {
-        var user = await _userService.GetByIdAsync(id);
-        if (user is null)
-            return NotFound();
 
-        // Assuming UserDto has a Role property
-        user.Role = newRole;
-        await _userService.UpdateAsync(user);
-        
+    [HttpPatch("{id}/update-role")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> UpdateRole(string id, [FromBody] string newRole)
+    {
+        await _mediator.Send(new UpdateUserRoleCommand { Id = id, NewRole = newRole });
         return NoContent();
     }
 }

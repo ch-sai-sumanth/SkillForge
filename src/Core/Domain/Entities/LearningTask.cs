@@ -13,4 +13,12 @@ public class LearningTask
 
     public string Status { get; set; } = "Pending"; // e.g., Pending, Completed, Overdue
     public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+    public string AssignedById { get; set; } = string.Empty; // Mentor ID
+
+    public string AssignedToId { get; set; } = string.Empty; // Mentee ID
+
+    public DateTime AssignedDate { get; set; } = DateTime.UtcNow;
+
+    public DateTime? CompletedDate { get; set; }
 }

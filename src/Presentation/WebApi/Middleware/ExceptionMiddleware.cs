@@ -1,6 +1,6 @@
 using System.Net;
 using System.Text.Json;
-
+using System.Threading.Tasks;
 namespace WebApi.Middleware;
 
 public class ExceptionMiddleware

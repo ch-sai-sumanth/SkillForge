@@ -60,7 +60,8 @@ public class SubscriptionPlanService : ISubscriptionPlanService
         var existingPlan = await _subscriptionPlanRepository.GetByIdAsync(id);
         if (existingPlan == null)
             return false;
-
+        
+        existingPlan.MentorId = dto.MentorId;
         existingPlan.Title = dto.Title;
         existingPlan.Description = dto.Description;
         existingPlan.Price = dto.Price;

@@ -1,4 +1,6 @@
 using System.Text;
+using Application.Commons;
+using Application.Commons.LoginUser;
 using Application.DTOs;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
@@ -9,6 +11,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure.Configuration;
 using Infrastructure.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.FileProviders;
@@ -51,6 +54,11 @@ builder.Services.AddAutoMapper(typeof(SubscriptionPlanProfile));
 builder.Services.AddAutoMapper(typeof(MentorRateProfile));
 builder.Services.AddAutoMapper(typeof(PaymentProfile));
 builder.Services.AddAutoMapper(typeof(UserSubscriptionProfile));
+builder.Services.AddAutoMapper(typeof(SessionProfile));
+builder.Services.AddAutoMapper(typeof(SessionHistoryProfile));
+builder.Services.AddAutoMapper(typeof(SessionProfile));
+
+
 
 
 // Register the UserRepository
@@ -91,7 +99,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<UpdateSessionDtoValidator>(
 builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateSubscriptionPlanDtoValidator>();
 
-
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(RegisterUserCommandHandler).Assembly));
 
 
 
@@ -169,6 +177,9 @@ builder.Services.AddAuthentication(options =>
     });
 
 builder.Services.AddAuthorization();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+
 
 var app = builder.Build();
 

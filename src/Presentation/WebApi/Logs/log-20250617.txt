@@ -1,0 +1,139 @@
+[2025-06-17 11:16:29 INF] Starting up the application
+[2025-06-17 11:16:29 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-17 11:17:00 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Unable to resolve service for type 'MediatR.IMediator' while attempting to activate 'API.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-17 11:17:00 ERR] HTTP POST /api/Auth/register responded 500 in 170.2508 ms
+[2025-06-17 11:23:51 INF] Starting up the application
+[2025-06-17 11:23:52 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-17 11:24:02 ERR] Unhandled exception occurred.
+System.InvalidOperationException: Username is already taken.
+   at Application.Commons.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Commands/RegisterUser/RegisterUserCommandHandler.cs:line 22
+   at API.Controllers.AuthController.Register(RegisterRequestDto registerDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-17 11:24:02 ERR] HTTP POST /api/Auth/register responded 500 in 997.9132 ms
+[2025-06-17 11:24:11 INF] User 'saiss' Created Succesfully
+[2025-06-17 11:24:11 INF] HTTP POST /api/Auth/register responded 200 in 547.5508 ms
+[2025-06-17 11:41:55 INF] Starting up the application
+[2025-06-17 11:41:55 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-17 11:42:51 ERR] Unhandled exception occurred.
+System.ArgumentException: LoginRequestDto does not implement IRequest (Parameter 'request')
+   at MediatR.Mediator.<>c.<Send>b__9_0(Type requestType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at MediatR.Mediator.Send(Object request, CancellationToken cancellationToken)
+   at API.Controllers.AuthController.Login(LoginRequestDto loginDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/AuthController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-17 11:42:51 INF] HTTP POST /api/Auth/login responded 400 in 220.6630 ms
+[2025-06-17 11:43:01 ERR] Unhandled exception occurred.
+System.ArgumentException: LoginRequestDto does not implement IRequest (Parameter 'request')
+   at MediatR.Mediator.<>c.<Send>b__9_0(Type requestType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at MediatR.Mediator.Send(Object request, CancellationToken cancellationToken)
+   at API.Controllers.AuthController.Login(LoginRequestDto loginDto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/AuthController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-17 11:43:01 INF] HTTP POST /api/Auth/login responded 400 in 7.1284 ms
+[2025-06-17 11:44:27 INF] User 'sai' validation is done
+[2025-06-17 11:44:27 INF] JWT Token generated for user ''
+[2025-06-17 11:44:27 INF] New Refresh token generated
+[2025-06-17 11:44:27 INF] User '' logged in Successfully
+[2025-06-17 11:44:27 INF] HTTP POST /api/Auth/login responded 200 in 1241.1367 ms
+[2025-06-17 11:44:30 INF] User 'sumanth' validation is done
+[2025-06-17 11:44:30 INF] JWT Token generated for user ''
+[2025-06-17 11:44:30 INF] New Refresh token generated
+[2025-06-17 11:44:30 INF] User '' logged in Successfully
+[2025-06-17 11:44:30 INF] HTTP POST /api/Auth/login responded 200 in 263.4727 ms
+[2025-06-17 11:44:32 INF] HTTP POST /api/mentee responded 200 in 92.4950 ms
+[2025-06-17 11:44:35 INF] HTTP GET /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals responded 200 in 40.0435 ms
+[2025-06-17 11:44:40 ERR] Unhandled exception occurred.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Application.Services.GoalService.UpdateGoalAsync(String goalId, UpdateGoalDto dto) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/GoalService.cs:line 42
+   at Application.Commands.UpdateGoal.UpdateGoalCommandHandler.Handle(UpdateGoalCommand request, CancellationToken cancellationToken) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Commands/UpdateGoal/UpdateGoalCommandHandler.cs:line 16
+   at API.Controllers.GoalController.UpdateGoalProgress(String goalId, UpdateGoalDto dto)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+[2025-06-17 11:44:40 ERR] HTTP PUT /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals/7b10f9d8-0373-4659-b15a-9ae15e17fea7/progress responded 500 in 25.3598 ms
+[2025-06-17 11:47:17 INF] HTTP PUT /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals/7b10f9d8-0373-4659-b15a-9ae15e17fea7/progress responded 200 in 17.1469 ms
+[2025-06-17 11:47:20 INF] HTTP DELETE /api/mentee/a1c99267-505d-4fb0-833c-abaedb160be5/goals/7b10f9d8-0373-4659-b15a-9ae15e17fea7 responded 200 in 29.4393 ms
+[2025-06-17 12:18:39 INF] Starting up the application
+[2025-06-17 12:18:39 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-17 12:29:36 INF] Starting up the application
+[2025-06-17 12:29:36 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-17 12:29:47 INF] HTTP GET /api/tasks/mentee/a1c99267-505d-4fb0-833c-abaedb160be5 responded 200 in 781.4385 ms
+[2025-06-17 12:29:54 ERR] Unhandled exception occurred.
+System.InvalidOperationException: No service for type 'MediatR.IRequestHandler`2[Application.Queries.AvailableMentors.GetAvailableMentorsQuery,System.Collections.Generic.List`1[Application.DTOs.MentorAvailabilityDto]]' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.<>c__DisplayClass1_0.<Handle>g__Handler|0(CancellationToken t)
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.Handle(IRequest`1 request, IServiceProvider serviceProvider, CancellationToken cancellationToken)
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.Handle(Object request, IServiceProvider serviceProvider, CancellationToken cancellationToken)
+   at API.Controllers.MenteeController.GetAvailableMentors(String skill, String dateTime) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/MenteeController.cs:line 31
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-17 12:29:54 ERR] HTTP GET /api/mentees/available-mentors responded 500 in 72.6002 ms

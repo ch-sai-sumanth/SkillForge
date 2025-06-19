@@ -1,5 +1,11 @@
+using System.Threading.Tasks;
+using Application.Commands.CreateGoal;
+using Application.Commands.DeleteGoal;
+using Application.Commands.UpdateGoal;
 using Application.DTOs;
 using Application.Interfaces;
+using Application.Queries.GetGoals;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,31 +15,43 @@ namespace API.Controllers;
 [Route("api/mentee")]
 public class GoalController : ControllerBase
 {
-    private readonly IGoalService _goalService;
+    private readonly IMediator _mediator;
 
-    public GoalController(IGoalService goalService)
+
+    public GoalController(IMediator mediator)
     {
-        _goalService = goalService;
+        _mediator = mediator;
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateGoal([FromBody] CreateGoalDto dto)
     {
-        await _goalService.CreateGoalAsync(dto);
-        return Ok("Goal created.");
+        
+        var result = await _mediator.Send(new CreateGoalCommand
+        {
+           Goal = dto
+        });
+        return Ok(result);
     }
     
     [HttpPut("{menteeId}/goals/{goalId}/progress")]
-    public async Task<IActionResult> UpdateGoalProgress(string goalId, [FromBody] UpdateGoalDto dto)
+    public async Task<IActionResult> UpdateGoalProgress(string goalId, [FromBody] UpdateGoalDto updateGoalDto)
     {
-        await _goalService.UpdateGoalAsync(goalId,dto);
-        return Ok("Goal progress updated.");
+      var result = await _mediator.Send(new UpdateGoalCommand
+      {
+          GoalId = goalId,
+          UpdatedGoal = updateGoalDto
+      });
+        return Ok(result);
     }
-
+    
     [HttpGet("{menteeId}/goals")]
     public async Task<IActionResult> GetGoalsForMentee(string menteeId)
     {
-        var goals = await _goalService.GetGoalsByMenteeIdAsync(menteeId);
+        var goals = await _mediator.Send(new GetGoalsByMenteeIdQuery()
+        {
+            MenteeId = menteeId
+        });
         return Ok(goals);
     }
     
@@ -41,7 +59,10 @@ public class GoalController : ControllerBase
     [Route("{menteeId}/goals/{goalId}")]
     public async Task<IActionResult> DeleteGoal(string goalId)
     {
-        await _goalService.DeleteGoalAsync(goalId);
-        return Ok("Goal deleted.");
+        var result = await _mediator.Send(new DeleteGoalCommand
+        {
+            GoalId = goalId
+        });
+        return Ok(result);
     }
 }

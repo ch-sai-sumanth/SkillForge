@@ -1,48 +1,53 @@
+using Application.Commands.DeleteMentorRate;
+using Application.Commands.SetMentorRate;
 using Application.DTOs;
 using Application.Interfaces;
+using Application.Queries.GetMentorRate;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Threading.Tasks;
 namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class MentorRateController : ControllerBase
 {
-    private readonly IMentorRateService _mentorRateService;
+    private readonly IMediator _mediator;
 
-    public MentorRateController(IMentorRateService mentorRateService)
+    public MentorRateController(IMediator mediator)
     {
-        _mentorRateService = mentorRateService;
+        _mediator = mediator;
     }
-    
 
-    // POST: api/mentorRate/set
     [HttpPost("set")]
     public async Task<IActionResult> SetRate([FromBody] MentorRateDto dto)
     {
-        await _mentorRateService.SetMentorRateAsync(dto);
-        return Ok(new { message = "Mentor rate saved successfully." });
+        var command = new SetMentorRateCommand { MentorRate = dto };
+        var result = await _mediator.Send(command);
+        return result
+            ? Ok(new { message = "Mentor rate saved successfully." })
+            : BadRequest("Failed to save mentor rate.");
     }
 
-    // GET: api/mentorRate/{mentorId}
     [HttpGet("{mentorId}")]
     public async Task<IActionResult> GetRate(string mentorId)
     {
-        var rate = await _mentorRateService.GetMentorRateAsync(mentorId);
-        if (rate == null)
-            return NotFound(new { message = "Mentor rate not found." });
+        var query = new GetMentorRateQuery { MentorId = mentorId };
+        var rate = await _mediator.Send(query);
 
-        return Ok(rate);
+        return rate != null
+            ? Ok(rate)
+            : NotFound(new { message = "Mentor rate not found." });
     }
 
-    // DELETE: api/mentorRate/{mentorId}
     [HttpDelete("{mentorId}")]
     public async Task<IActionResult> DeleteRate(string mentorId)
     {
-        var deleted = await _mentorRateService.DeleteMentorRateAsync(mentorId);
-        if (!deleted)
-            return NotFound(new { message = "Mentor rate not found." });
+        var command = new DeleteMentorRateCommand { MentorId = mentorId };
+        var deleted = await _mediator.Send(command);
 
-        return Ok(new { message = "Mentor rate deleted successfully." });
+        return deleted
+            ? Ok(new { message = "Mentor rate deleted successfully." })
+            : NotFound(new { message = "Mentor rate not found." });
     }
 }

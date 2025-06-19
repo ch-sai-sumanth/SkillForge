@@ -7,5 +7,6 @@ public class UpdateSessionDto
     public DateTime EndTime { get; set; }
     public string? MeetingLink { get; set; }
     public string? Notes { get; set; }
+    public string Status { get; set; } = string.Empty; // Stored as enum internally, mapped to string in DTO
     public string? UpdatedBy { get; set; } // Optional tracking
 }

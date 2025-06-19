@@ -1,5 +1,6 @@
 using Application.DTOs;
 using Application.Interfaces;
+using AutoMapper;
 using Domain.Repositories;
 using User.Domain.Entities;
 
@@ -8,10 +9,12 @@ namespace Application.Services;
 public class TaskService : ITaskService
 {
     private readonly ITaskRepository _taskRepository;
+    private readonly IMapper _modelMapper;
 
-    public TaskService(ITaskRepository taskRepository)
+    public TaskService(ITaskRepository taskRepository,IMapper modelMapper)
     {
         _taskRepository = taskRepository;
+        _modelMapper = modelMapper;
     }
 
     public async Task AssignTaskAsync(AssignTaskDto dto)
@@ -29,13 +32,16 @@ public class TaskService : ITaskService
         await _taskRepository.CreateTaskAsync(task);
     }
 
-    public async Task<List<LearningTask>> GetTasksByMenteeIdAsync(string menteeId)
+    public async Task<List<TaskDto>> GetTasksByMenteeIdAsync(string menteeId)
     {
-        return await _taskRepository.GetTasksByMenteeAsync(menteeId);
+       List<LearningTask> tasks = await _taskRepository.GetTasksByMenteeAsync(menteeId);
+         return _modelMapper.Map<List<TaskDto>>(tasks);
     }
-    public async Task<LearningTask?> GetTaskByIdAsync(string taskId)
+    public async Task<TaskDto?> GetTaskByIdAsync(string taskId)
     {
-        return await _taskRepository.GetByIdAsync(taskId);
+        var task= await _taskRepository.GetByIdAsync(taskId);
+        
+        return _modelMapper.Map<TaskDto>(task);
     }
 
     public async Task UpdateTaskStatusAsync(string taskId, string newStatus)

@@ -1,3 +1,4 @@
+using Application.DTOs;
 using User.Domain.Entities;
 
 namespace Domain.Repositories;
