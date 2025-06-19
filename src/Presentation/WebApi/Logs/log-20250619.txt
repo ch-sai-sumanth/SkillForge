@@ -366,3 +366,331 @@ System.InvalidOperationException: No service for type 'MediatR.IRequestHandler`2
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
 [2025-06-19 14:43:09 ERR] HTTP GET /api/mentees/available-mentors responded 500 in 139.6373 ms
+[2025-06-19 15:06:33 INF] Starting up the application
+[2025-06-19 15:06:34 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-19 15:06:43 INF] HTTP GET /api/mentees/available-mentors responded 200 in 948.9005 ms
+[2025-06-19 15:07:01 ERR] Unhandled exception occurred.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+User -> MentorMatchDto
+User.Domain.Entities.User -> Application.DTOs.MentorMatchDto
+   at lambda_method24(Closure, Object, MentorMatchDto, ResolutionContext)
+   at Application.Services.UserService.<>c__DisplayClass15_0.<SearchMentorsBySkillAndAvailabilityAsync>b__1(User m) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/UserService.cs:line 179
+   at System.Linq.Enumerable.SelectListIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at Application.Services.UserService.SearchMentorsBySkillAndAvailabilityAsync(String skill, DateTime desiredDateTime) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/UserService.cs:line 179
+   at Application.Queries.AvailableMentors.GetAvailableMentorsQueryHandler.Handle(GetAvailableMentorsQuery request, CancellationToken cancellationToken) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Queries/AvailableMentors/GetAvailableMentorsQueryHandler.cs:line 18
+   at API.Controllers.MenteeController.GetAvailableMentors(String skill, String dateTime) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/MenteeController.cs:line 31
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-19 15:07:01 ERR] HTTP GET /api/mentees/available-mentors responded 500 in 154.6912 ms
+[2025-06-19 15:19:08 INF] HTTP GET /api/mentees/available-mentors responded 200 in 37.2206 ms
+[2025-06-19 15:19:30 INF] HTTP GET /api/sessions/user/f3dcdfcc-f836-4e12-8da7-34cfceee6236 responded 401 in 11.2155 ms
+[2025-06-19 15:19:38 INF] User 'sumanth' validation is done
+[2025-06-19 15:19:38 INF] JWT Token generated for user ''
+[2025-06-19 15:19:38 INF] New Refresh token generated
+[2025-06-19 15:19:38 INF] User '' logged in Successfully
+[2025-06-19 15:19:38 INF] HTTP POST /api/Auth/login responded 200 in 632.4710 ms
+[2025-06-19 15:19:40 INF] User 'sai' validation is done
+[2025-06-19 15:19:40 INF] JWT Token generated for user ''
+[2025-06-19 15:19:40 INF] New Refresh token generated
+[2025-06-19 15:19:40 INF] User '' logged in Successfully
+[2025-06-19 15:19:40 INF] HTTP POST /api/Auth/login responded 200 in 245.5473 ms
+[2025-06-19 15:19:48 INF] HTTP GET /api/sessions/user/f3dcdfcc-f836-4e12-8da7-34cfceee6236 responded 200 in 66.2872 ms
+[2025-06-19 15:19:51 INF] HTTP POST /api/sessions/book responded 200 in 77.4561 ms
+[2025-06-19 15:19:54 INF] HTTP GET /api/sessions/user/f3dcdfcc-f836-4e12-8da7-34cfceee6236 responded 200 in 4.4492 ms
+[2025-06-19 15:20:52 INF] User 'sai' validation is done
+[2025-06-19 15:20:52 INF] JWT Token generated for user ''
+[2025-06-19 15:20:52 INF] New Refresh token generated
+[2025-06-19 15:20:52 INF] User '' logged in Successfully
+[2025-06-19 15:20:52 INF] HTTP POST /api/Auth/login responded 200 in 193.0355 ms
+[2025-06-19 15:20:54 INF] User 'sumanth' validation is done
+[2025-06-19 15:20:54 INF] JWT Token generated for user ''
+[2025-06-19 15:20:54 INF] New Refresh token generated
+[2025-06-19 15:20:54 INF] User '' logged in Successfully
+[2025-06-19 15:20:54 INF] HTTP POST /api/Auth/login responded 200 in 212.6148 ms
+[2025-06-19 15:20:59 INF] HTTP GET /api/Profile/me responded 200 in 13.7883 ms
+[2025-06-19 15:21:03 INF] User 'sai' validation is done
+[2025-06-19 15:21:03 INF] JWT Token generated for user ''
+[2025-06-19 15:21:03 INF] New Refresh token generated
+[2025-06-19 15:21:03 INF] User '' logged in Successfully
+[2025-06-19 15:21:03 INF] HTTP POST /api/Auth/login responded 200 in 218.5781 ms
+[2025-06-19 15:21:05 INF] HTTP GET /api/Profile/me responded 200 in 3.1875 ms
+[2025-06-19 15:21:09 INF] HTTP POST /api/sessions/book responded 200 in 12.6952 ms
+[2025-06-19 15:24:02 INF] User 'sai' validation is done
+[2025-06-19 15:24:02 INF] JWT Token generated for user ''
+[2025-06-19 15:24:02 INF] New Refresh token generated
+[2025-06-19 15:24:02 INF] User '' logged in Successfully
+[2025-06-19 15:24:02 INF] HTTP POST /api/Auth/login responded 200 in 193.3826 ms
+[2025-06-19 15:24:04 INF] User 'sumanth' validation is done
+[2025-06-19 15:24:04 INF] JWT Token generated for user ''
+[2025-06-19 15:24:04 INF] New Refresh token generated
+[2025-06-19 15:24:04 INF] User '' logged in Successfully
+[2025-06-19 15:24:04 INF] HTTP POST /api/Auth/login responded 200 in 189.2729 ms
+[2025-06-19 15:24:07 INF] HTTP GET /api/Profile/me responded 200 in 3.0901 ms
+[2025-06-19 15:24:10 INF] HTTP GET /api/Profile/me responded 200 in 2.5762 ms
+[2025-06-19 15:24:15 INF] HTTP GET /api/sessions/user/{{menteeId}} responded 200 in 4.6709 ms
+[2025-06-19 15:24:23 INF] HTTP POST /api/sessions/book responded 200 in 7.7010 ms
+[2025-06-19 15:25:01 INF] HTTP GET /api/Profile/me responded 200 in 2.6180 ms
+[2025-06-19 15:25:07 INF] HTTP POST /api/sessions/book responded 200 in 6.7276 ms
+[2025-06-19 15:25:11 INF] HTTP GET /api/sessions/user/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 200 in 3.4020 ms
+[2025-06-19 15:25:19 INF] HTTP GET /api/sessions/user/f3dcdfcc-f836-4e12-8da7-34cfceee6236 responded 200 in 2.5070 ms
+[2025-06-19 15:25:38 INF] HTTP POST /api/payment/record responded 200 in 51.3672 ms
+[2025-06-19 15:25:42 INF] HTTP GET /api/payment/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 200 in 37.9870 ms
+[2025-06-19 15:25:59 INF] HTTP GET /api/payment/all responded 200 in 9.8639 ms
+[2025-06-19 15:26:13 INF] HTTP GET /api/payment/90bbf165-b540-414b-993f-b6beea69196b responded 200 in 17.0993 ms
+[2025-06-19 15:26:37 INF] HTTP PUT /api/payment/update-status/90bbf165-b540-414b-993f-b6beea69196b responded 200 in 20.2687 ms
+[2025-06-19 15:27:32 INF] HTTP GET /api/payment/all responded 200 in 2.3119 ms
+[2025-06-19 15:27:51 INF] HTTP POST /api/sessions/f42a5299-a4b2-4475-851c-c07c7ba0a28d/accept responded 200 in 13.1778 ms
+[2025-06-19 15:28:01 INF] HTTP GET /api/sessions/user/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 200 in 2.4413 ms
+[2025-06-19 15:28:24 INF] HTTP POST /api/mentee responded 200 in 21.9363 ms
+[2025-06-19 15:28:27 INF] HTTP GET /api/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c/goals responded 200 in 25.7949 ms
+[2025-06-19 15:28:32 INF] HTTP PUT /api/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c/goals/81fa57e5-6b7f-4510-ab5d-f7ca0012230b/progress responded 200 in 23.1675 ms
+[2025-06-19 15:28:37 INF] HTTP DELETE /api/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c/goals/81fa57e5-6b7f-4510-ab5d-f7ca0012230b responded 200 in 30.0750 ms
+[2025-06-19 15:28:44 INF] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 200 in 30.2827 ms
+[2025-06-19 15:28:56 INF] HTTP POST /api/tasks/assign responded 200 in 33.4864 ms
+[2025-06-19 15:28:59 ERR] Unhandled exception occurred.
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[User.Domain.Entities.LearningTask, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[Application.DTOs.TaskDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+LearningTask -> TaskDto
+User.Domain.Entities.LearningTask -> Application.DTOs.TaskDto
+   at lambda_method338(Closure, LearningTask, TaskDto, ResolutionContext)
+   at lambda_method304(Closure, Object, List`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method304(Closure, Object, List`1, ResolutionContext)
+   at Application.Services.TaskService.GetTasksByMenteeIdAsync(String menteeId)
+   at Application.Queries.Task.GetTask.GetTasksForMenteeQueryHandler.Handle(GetTasksForMenteeQuery request, CancellationToken cancellationToken)
+   at TaskController.GetTasksForMentee(String menteeId) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/TaskController.cs:line 40
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-19 15:28:59 ERR] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 500 in 13.0264 ms
+[2025-06-19 15:29:29 INF] HTTP GET /api/tasks/tasks/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 404 in 0.4417 ms
+[2025-06-19 15:29:33 INF] HTTP GET /api/tasks/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 404 in 13.9385 ms
+[2025-06-19 15:30:18 ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+TaskController.GetTasksForMentee (WebApi)
+TaskController.GetTaskById (WebApi)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[2025-06-19 15:30:30 ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+TaskController.GetTasksForMentee (WebApi)
+TaskController.GetTaskById (WebApi)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[2025-06-19 15:31:06 ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+TaskController.GetTasksForMentee (WebApi)
+TaskController.GetTaskById (WebApi)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[2025-06-19 15:31:08 ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+TaskController.GetTasksForMentee (WebApi)
+TaskController.GetTaskById (WebApi)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[2025-06-19 16:01:56 ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+TaskController.GetTasksForMentee (WebApi)
+TaskController.GetTaskById (WebApi)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[2025-06-19 16:04:24 INF] Starting up the application
+[2025-06-19 16:04:24 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-19 16:04:24 ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+TaskController.GetTasksForMentee (WebApi)
+TaskController.GetTaskById (WebApi)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[2025-06-19 16:04:28 ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+TaskController.GetTasksForMentee (WebApi)
+TaskController.GetTaskById (WebApi)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[2025-06-19 16:05:02 INF] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 404 in 96.4981 ms
+[2025-06-19 16:05:04 INF] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 404 in 2.6897 ms
+[2025-06-19 16:05:21 INF] Starting up the application
+[2025-06-19 16:05:21 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-19 16:05:28 ERR] Unhandled exception occurred.
+System.FormatException: Element 'AssignedById' does not match any field or property of class User.Domain.Entities.LearningTask.
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.DeserializeClass(BsonDeserializationContext context)
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
+   at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Deserialize[TValue](IBsonSerializer`1 serializer, BsonDeserializationContext context)
+   at MongoDB.Driver.Core.Operations.CursorBatchDeserializationHelper.DeserializeBatch[TDocument](RawBsonArray batch, IBsonSerializer`1 documentSerializer, MessageEncoderSettings messageEncoderSettings)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.CreateFirstCursorBatch(BsonDocument cursorDocument)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.CreateCursor(IChannelSourceHandle channelSource, IChannelHandle channel, BsonDocument commandResult)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.ExecuteAsync(RetryableReadContext context, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.ExecuteAsync(IReadBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.OperationExecutor.ExecuteReadOperationAsync[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.ExecuteReadOperationAsync[TResult](IClientSessionHandle session, IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.IAsyncCursorSourceExtensions.ToListAsync[TDocument](IAsyncCursorSource`1 source, CancellationToken cancellationToken)
+   at Infrastructure.Repositories.TaskRepository.GetTasksByMenteeAsync(String menteeId) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Infrastructure/Persistence/Repositories/TaskRepository.cs:line 38
+   at Application.Services.TaskService.GetTasksByMenteeIdAsync(String menteeId) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/TaskService.cs:line 37
+   at Application.Queries.Task.GetTask.GetTasksForMenteeQueryHandler.Handle(GetTasksForMenteeQuery request, CancellationToken cancellationToken) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Queries/GetTask/GetTasksForMenteeQueryHandler.cs:line 18
+   at TaskController.GetTasksForMentee(String menteeId) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/TaskController.cs:line 41
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-19 16:05:28 ERR] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 500 in 1104.7878 ms
+[2025-06-19 16:07:32 INF] Starting up the application
+[2025-06-19 16:07:32 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-19 16:07:34 INF] HTTP POST /api/tasks/assign responded 401 in 197.7559 ms
+[2025-06-19 16:07:36 INF] HTTP POST /api/tasks/assign responded 401 in 5.2288 ms
+[2025-06-19 16:07:41 INF] User 'sai' validation is done
+[2025-06-19 16:07:41 INF] JWT Token generated for user ''
+[2025-06-19 16:07:41 INF] New Refresh token generated
+[2025-06-19 16:07:42 INF] User '' logged in Successfully
+[2025-06-19 16:07:42 INF] HTTP POST /api/Auth/login responded 200 in 1481.0766 ms
+[2025-06-19 16:07:44 INF] User 'sumanth' validation is done
+[2025-06-19 16:07:44 INF] JWT Token generated for user ''
+[2025-06-19 16:07:44 INF] New Refresh token generated
+[2025-06-19 16:07:44 INF] User '' logged in Successfully
+[2025-06-19 16:07:44 INF] HTTP POST /api/Auth/login responded 200 in 305.6855 ms
+[2025-06-19 16:07:46 INF] HTTP POST /api/tasks/assign responded 403 in 15.6596 ms
+[2025-06-19 16:08:14 INF] HTTP POST /api/tasks/assign responded 200 in 91.0801 ms
+[2025-06-19 16:08:18 ERR] Unhandled exception occurred.
+System.FormatException: Element 'AssignedById' does not match any field or property of class User.Domain.Entities.LearningTask.
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.DeserializeClass(BsonDeserializationContext context)
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
+   at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Deserialize[TValue](IBsonSerializer`1 serializer, BsonDeserializationContext context)
+   at MongoDB.Driver.Core.Operations.CursorBatchDeserializationHelper.DeserializeBatch[TDocument](RawBsonArray batch, IBsonSerializer`1 documentSerializer, MessageEncoderSettings messageEncoderSettings)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.CreateFirstCursorBatch(BsonDocument cursorDocument)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.CreateCursor(IChannelSourceHandle channelSource, IChannelHandle channel, BsonDocument commandResult)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.ExecuteAsync(RetryableReadContext context, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.ExecuteAsync(IReadBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.OperationExecutor.ExecuteReadOperationAsync[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.ExecuteReadOperationAsync[TResult](IClientSessionHandle session, IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.IAsyncCursorSourceExtensions.ToListAsync[TDocument](IAsyncCursorSource`1 source, CancellationToken cancellationToken)
+   at Infrastructure.Repositories.TaskRepository.GetTasksByMenteeAsync(String menteeId) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Infrastructure/Persistence/Repositories/TaskRepository.cs:line 38
+   at Application.Services.TaskService.GetTasksByMenteeIdAsync(String menteeId) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/TaskService.cs:line 37
+   at Application.Queries.Task.GetTask.GetTasksForMenteeQueryHandler.Handle(GetTasksForMenteeQuery request, CancellationToken cancellationToken) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Queries/GetTask/GetTasksForMenteeQueryHandler.cs:line 18
+   at TaskController.GetTasksForMentee(String menteeId)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+[2025-06-19 16:08:18 ERR] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 500 in 109.5832 ms
+[2025-06-19 16:11:08 INF] Starting up the application
+[2025-06-19 16:11:08 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-19 16:11:14 INF] HTTP POST /api/tasks/assign responded 200 in 999.4469 ms
+[2025-06-19 16:11:18 ERR] Unhandled exception occurred.
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[User.Domain.Entities.LearningTask, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[Application.DTOs.TaskDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+LearningTask -> TaskDto
+User.Domain.Entities.LearningTask -> Application.DTOs.TaskDto
+   at lambda_method38(Closure, LearningTask, TaskDto, ResolutionContext)
+   at lambda_method37(Closure, Object, List`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method37(Closure, Object, List`1, ResolutionContext)
+   at Application.Services.TaskService.GetTasksByMenteeIdAsync(String menteeId) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Services/TaskService.cs:line 38
+   at Application.Queries.Task.GetTask.GetTasksForMenteeQueryHandler.Handle(GetTasksForMenteeQuery request, CancellationToken cancellationToken) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Core/Application/Queries/GetTask/GetTasksForMenteeQueryHandler.cs:line 18
+   at TaskController.GetTasksForMentee(String menteeId) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Controllers/TaskController.cs:line 41
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebApi.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in /home/saisumanth/Documents/Dev Learning/BackendLearning/DotNet/SkillForge/src/Presentation/WebApi/Middleware/ExceptionMiddleware.cs:line 21
+[2025-06-19 16:11:18 ERR] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 500 in 248.2851 ms
+[2025-06-19 16:14:16 INF] Starting up the application
+[2025-06-19 16:14:16 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2025-06-19 16:14:23 INF] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 200 in 1054.0855 ms
+[2025-06-19 16:14:31 INF] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 200 in 28.6443 ms
+[2025-06-19 16:14:38 INF] HTTP GET /api/tasks/19e5e8c0-913a-42d9-b31a-1d28517f24d5 responded 200 in 26.3714 ms
+[2025-06-19 16:14:44 INF] HTTP PUT /api/tasks/19e5e8c0-913a-42d9-b31a-1d28517f24d5/status responded 200 in 157.4674 ms
+[2025-06-19 16:14:47 INF] HTTP GET /api/tasks/19e5e8c0-913a-42d9-b31a-1d28517f24d5 responded 200 in 3.4212 ms
+[2025-06-19 16:16:12 INF] HTTP DELETE /api/tasks/19e5e8c0-913a-42d9-b31a-1d28517f24d5 responded 200 in 26.7789 ms
+[2025-06-19 16:16:18 INF] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 200 in 11.4916 ms
+[2025-06-19 16:16:23 INF] HTTP PUT /api/tasks/35f0ce3e-defc-492d-83fc-b2ea946bd4ef/status responded 200 in 14.6691 ms
+[2025-06-19 16:16:27 INF] HTTP GET /api/tasks/mentee/58ffb267-96b5-4538-8dc1-2bce7ed9b23c responded 200 in 4.6065 ms

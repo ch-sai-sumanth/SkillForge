@@ -20,6 +20,7 @@ public class TaskController : ControllerBase
         _mediator = mediator;
     }
 
+    [Authorize(Roles = "Mentor")]
     [HttpPost("assign")]
     public async Task<IActionResult> AssignTask([FromBody] AssignTaskDto dto)
     {

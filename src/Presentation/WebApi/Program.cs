@@ -57,6 +57,9 @@ builder.Services.AddAutoMapper(typeof(UserSubscriptionProfile));
 builder.Services.AddAutoMapper(typeof(SessionProfile));
 builder.Services.AddAutoMapper(typeof(SessionHistoryProfile));
 builder.Services.AddAutoMapper(typeof(SessionProfile));
+builder.Services.AddAutoMapper(typeof(LearningTaskProfile));
+
+
 
 
 

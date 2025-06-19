@@ -52,6 +52,14 @@ public class TaskService : ITaskService
         
         task.Id= taskId;
         task.Status = newStatus;
+        if(newStatus.Equals("Completed", StringComparison.OrdinalIgnoreCase))
+        {
+            task.CompletedDate = DateTime.UtcNow;
+        }
+        else
+        {
+            task.CompletedDate = null; 
+        }
         await _taskRepository.UpdateTaskAsync(task);
     }
     public async Task UpdateTaskAsync(string taskId, UpdateTaskDto dto)

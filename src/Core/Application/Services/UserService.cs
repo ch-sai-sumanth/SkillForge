@@ -176,7 +176,29 @@ public class UserService : IUserService
                 desiredDateTime >= a.StartTime && desiredDateTime <= a.EndTime))
             .ToList();
 
-        return availableMentors.Select(m => _mapper.Map<MentorMatchDto>(m)).ToList();
+        var result = availableMentors.Select(mentor =>
+        {
+            var matchedSkillsCount = mentor.Skills
+                .Count(s => s.Equals(skill, StringComparison.OrdinalIgnoreCase));
+
+            return new MentorMatchDto
+            {
+                MatchScore = matchedSkillsCount,
+                Mentor = new UserDto
+                {
+                    Id = mentor.Id,
+                    Name = mentor.Name,
+                    Username = mentor.Username,
+                    Email = mentor.Email,
+                    Role = mentor.Role,
+                    Skills = mentor.Skills,
+                    ProfileImagePath = mentor.ProfileImagePath
+                    // You can add more fields as needed
+                }
+            };
+        }).ToList();
+
+        return result;
     }
     
 
