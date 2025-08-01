@@ -22,6 +22,7 @@ using Serilog;
 using User.Domain.Entities;
 using User.Domain.Repositories;
 using WebApi.Validators;
+using WebApi.Middleware;
 
 
 
@@ -200,7 +201,8 @@ app.UseSerilogRequestLogging(options =>
     options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms";
 });
 app.UseHttpsRedirection();
-app.UseMiddleware<WebApi.Middleware.ExceptionMiddleware>();
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<ResponseValidationMiddleware>();
 app.UseStaticFiles();
 
 app.UseAuthentication();
