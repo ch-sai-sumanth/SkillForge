@@ -190,7 +190,7 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -200,7 +200,7 @@ app.UseSerilogRequestLogging(options =>
 {
     options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms";
 });
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); // Commented out for Docker deployment
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<ResponseValidationMiddleware>();
 app.UseStaticFiles();

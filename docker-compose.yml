@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  # MongoDB service
+  mongodb:
+    image: mongo:7.0
+    container_name: skillforge-mongodb
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: SkillForgeDB
+    volumes:
+      - mongodb_data:/data/db
+      - ./scripts/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - skillforge-network
+
+  # SkillForge API service
+  skillforge-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: skillforge-api
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - MongoDbSettings__ConnectionString=mongodb://admin:password123@mongodb:27017/SkillForgeDB?authSource=admin
+      - MongoDbSettings__DatabaseName=SkillForgeDB
+      - JwtSettings__SecretKey=your-super-secret-jwt-key-must-be-at-least-32-characters-long-for-security
+      - JwtSettings__Issuer=SkillForge
+      - JwtSettings__Audience=SkillForge-Users
+      - JwtSettings__ExpirationMinutes=60
+    depends_on:
+      - mongodb
+    volumes:
+      - ./uploads:/app/wwwroot/uploads
+    networks:
+      - skillforge-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: MongoDB Express for database management (development only)
+  mongo-express:
+    image: mongo-express:1.0.0
+    container_name: skillforge-mongo-express
+    restart: unless-stopped
+    ports:
+      - "8082:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password123
+      ME_CONFIG_MONGODB_URL: mongodb://admin:password123@mongodb:27017/
+      ME_CONFIG_BASICAUTH: "false"
+    depends_on:
+      - mongodb
+    networks:
+      - skillforge-network
+    profiles:
+      - dev
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  skillforge-network:
+    driver: bridge
