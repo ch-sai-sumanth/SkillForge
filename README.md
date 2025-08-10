@@ -86,7 +86,7 @@ docker compose up --build -d
 
 #### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/SkillForge.git
+git clone [https://github.com/ch-sai-sumanth/SkillForge.git](https://github.com/ch-sai-sumanth/SkillForge.git)
 cd SkillForge
 ```
 
