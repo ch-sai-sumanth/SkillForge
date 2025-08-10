@@ -208,7 +208,7 @@ The easiest way to run SkillForge is using Docker Compose:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/SkillForge.git
+git clone https://github.com/ch-sai-sumanth/SkillForge.git
 cd SkillForge
 
 # Start all services (API + MongoDB)
@@ -258,14 +258,14 @@ Pull the pre-built image from Docker Hub:
 
 ```bash
 # Pull the latest image
-docker pull yourusername/skillforge-api:latest
+docker pull saisumanth0531/skillforge-api:latest
 
 # Run with custom environment variables
 docker run -d \
   -p 8081:8080 \
   -e MongoDbSettings__ConnectionString="your-mongodb-connection-string" \
   -e JwtSettings__SecretKey="your-secret-key" \
-  yourusername/skillforge-api:latest
+  saisumanth0531/skillforge-api:latest
 ```
 
 ### Development with Docker Compose
